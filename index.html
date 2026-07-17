@@ -331,36 +331,86 @@
   @media(max-width:900px){.jokers-grid{grid-template-columns:repeat(3,1fr);}}
   @media(max-width:640px){.jokers-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:400px){.jokers-grid{grid-template-columns:1fr;}}
-  .joker-card{
-    background:var(--paper); border-radius:10px; overflow:hidden;
-    box-shadow:0 14px 28px rgba(0,0,0,.4);
-    position:relative; transition:transform .25s ease;
-  }
-  .joker-card:hover{transform:translateY(-4px);}
-  .joker-pip{
-    position:absolute; top:8px; left:10px; z-index:2;
-    font-family:var(--display); font-size:15px; color:var(--gold);
-    text-shadow:0 1px 3px rgba(0,0,0,.6);
-  }
-  .joker-pip.br{ top:auto; left:auto; bottom:8px; right:10px; transform:rotate(180deg); }
-  .joker-photo{
-    aspect-ratio:5/7; background-size:cover; background-position:center;
-    position:relative;
-  }
-  .joker-photo::after{
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(to top, rgba(10,10,10,.75) 0%, rgba(10,10,10,0) 45%);
-  }
-  .joker-body{ padding:10px 12px 14px; text-align:center; }
-  .joker-body .name{
-    font-family:var(--display); font-size:15.5px; color:var(--ink);
-    letter-spacing:.01em; margin:0;
-  }
-  .joker-body .surname{
-    font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--red-dim); margin:2px 0 0;
-  }
+  /* ---------- the jokers (random reveal) ---------- */
+.jokers-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
 
+@media(max-width:900px){.jokers-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:640px){.jokers-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:400px){.jokers-grid{grid-template-columns:1fr;}}
+
+.joker-card{
+  perspective:1000px;
+  height:340px;
+  cursor:pointer;
+}
+
+.joker-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  transition:transform .7s cubic-bezier(.2,.8,.2,1);
+  transform-style:preserve-3d;
+}
+
+.joker-card.revealed .joker-inner{
+  transform:rotateY(180deg);
+}
+
+.joker-front,
+.joker-back{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 16px 34px rgba(0,0,0,.5);
+}
+
+.joker-front{
+  background:linear-gradient(145deg,#4b155d,#111);
+  border:2px solid rgba(241,234,214,.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:90px;
+  color:var(--gold);
+}
+
+.joker-back{
+  transform:rotateY(180deg);
+  background:var(--paper);
+}
+
+.joker-photo{
+  aspect-ratio:5/7;
+  background-size:cover;
+  background-position:center;
+}
+
+.joker-body{
+  padding:12px;
+  text-align:center;
+}
+
+.joker-body .name{
+  font-family:var(--display);
+  font-size:17px;
+  color:var(--ink);
+  margin:0;
+}
+
+.joker-body .surname{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--red-dim);
+  margin-top:4px;
+}
   /* ---------- reference table ---------- */
   table.inv{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:13.5px;}
   table.inv th, table.inv td{text-align:left; padding:10px 8px; border-bottom:1px solid #cbbe97;}
@@ -1060,91 +1110,9 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">🃏</span><h2>The Jokers</h2><span class="sec-sub">The team behind Ethics Under Attack</span></div>
     <p class="jokers-intro">Every deck needs its wild cards. Meet the team who designed, wrote, and built Ethics Under Attack.</p>
-    <div class="jokers-grid">
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/aclan-yancy.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Yancy Aclan</p>
-          <p class="surname">Co-Creator</p>
-        </div>
-      </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/buno-carl-axle.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Carl Axle Buno</p>
-          <p class="surname">Co-Creator</p>
-        </div>
-      </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/borja-ariza.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Ariza Borja</p>
-          <p class="surname">Co-Creator</p>
-        </div>
-      </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/soriano-heart.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Heart Soriano</p>
-          <p class="surname">Co-Creator</p>
-        </div>
-      </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/manalang-matt-amiel.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Matt Amiel Manalang</p>
-          <p class="surname">Co-Creator</p>
-        </div>
-      </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/bool-mark-luke.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Mark Luke Bool</p>
-          <p class="surname">Co-Creator</p>
-        </div>
-      </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/untalan-john-princelee.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">John Princelee Untalan</p>
-          <p class="surname">Co-Creator</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="alt" id="share">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">↗</span><h2>Bring This to the Table</h2></div>
-    <div class="share-box">
-      <div class="qr-target" id="qrcode"></div>
-      <div class="share-text">
-        <h3>Scan to open this rulebook</h3>
-        <p>Once this page is hosted online, paste its live web address below to generate a scannable QR code for your box insert, table tent, or Discord.</p>
-        <div class="url-row">
-          <input id="urlInput" type="text" placeholder="https://your-site.com/ethics-under-attack" value="">
-          <button onclick="makeQR()">Generate</button>
-        </div>
-        <p class="share-note">The QR code updates instantly in your browser — nothing is uploaded. Host this HTML file (e.g. GitHub Pages, Netlify, or your school's server), then drop that link in above and print or download the code.</p>
-      </div>
-    </div>
-  </div>
-</section>
+   <div class="jokers-grid" id="jokersGrid">
+  <!-- Joker cards will be generated by JavaScript -->
+</div>
 
 <footer>
   <p>ETHICS UNDER ATTACK — OFFICIAL RULEBOOK · A 4-PLAYER GAME ON ENGINEERING ETHICS</p>
@@ -1170,6 +1138,62 @@
     makeQR();
   });
 </script>
+<script>
+const creators = [
+  { name: "Yancy Aclan", role: "Co-Creator", image: "assets/creators/aclan-yancy.png" },
+  { name: "Carl Axle Buno", role: "Co-Creator", image: "assets/creators/buno-carl-axle.png" },
+  { name: "Ariza Borja", role: "Co-Creator", image: "assets/creators/borja-ariza.png" },
+  { name: "Heart Soriano", role: "Co-Creator", image: "assets/creators/soriano-heart.png" },
+  { name: "Matt Amiel Manalang", role: "Co-Creator", image: "assets/creators/manalang-matt-amiel.png" },
+  { name: "Nice", role: "Co-Creator", image: "assets/creators/nice.png" },
+  { name: "Member 7", role: "Co-Creator", image: "assets/creators/member7.png" },
+  { name: "Member 8", role: "Co-Creator", image: "assets/creators/member8.png" }
+];
 
+const remaining = [...creators];
+const grid = document.getElementById('jokersGrid');
+
+function randomRemaining() {
+  const index = Math.floor(Math.random() * remaining.length);
+  return remaining.splice(index, 1)[0];
+}
+
+for (let i = 0; i < creators.length; i++) {
+
+  const card = document.createElement('div');
+  card.className = 'joker-card';
+
+  card.innerHTML = `
+    <div class="joker-inner">
+      <div class="joker-front">🃏</div>
+      <div class="joker-back">
+        <div class="joker-photo"></div>
+        <div class="joker-body">
+          <p class="name"></p>
+          <p class="surname"></p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  card.addEventListener('mouseenter', () => {
+
+    if (card.classList.contains('revealed')) return;
+    if (remaining.length === 0) return;
+
+    const creator = randomRemaining();
+
+    card.querySelector('.joker-photo').style.backgroundImage =
+      `url('${creator.image}')`;
+
+    card.querySelector('.name').textContent = creator.name;
+    card.querySelector('.surname').textContent = creator.role;
+
+    card.classList.add('revealed');
+  });
+
+  grid.appendChild(card);
+}
+</script>
 </body>
 </html>

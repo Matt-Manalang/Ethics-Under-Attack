@@ -130,8 +130,8 @@ a{color:inherit;}
 }
 .fan-card .glyph{font-size:34px; margin-bottom:8px;}
 .fan-card.c1{background:linear-gradient(160deg,var(--red),var(--red-dim)); transform:rotate(-16deg) translate(-58px,6px);}
-.fan-card.c2{background:linear-gradient(160deg,var(--blue),var(--blue-dim)); transform:rotate(-5deg) translate(-22px,-4px);}
-.fan-card.c3{background:linear-gradient(160deg,var(--green),var(--green-dim)); transform:rotate(6deg) translate(14px,-4px);}
+.fan-card.c2{background:linear-gradient(160deg,var(--green),var(--green-dim)); transform:rotate(-5deg) translate(-22px,-4px);}
+.fan-card.c3{background:linear-gradient(160deg,var(--blue),var(--blue-dim)); transform:rotate(6deg) translate(14px,-4px);}
 .fan-card.c4{background:linear-gradient(160deg,var(--purple),var(--purple-dim)); transform:rotate(16deg) translate(50px,6px);}
 .card-fan .fan-card:hover{transform:rotate(0deg) translate(0,-10px);}
 
@@ -252,8 +252,8 @@ section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line);
 .action-face.back p{font-size:13.5px; line-height:1.55; margin:0;}
 .action-face.back ul{font-size:13px; line-height:1.55; margin:6px 0 0; padding-left:16px;}
 .card-attack .front{background:linear-gradient(160deg,var(--red),var(--red-dim));}
-.card-defense .front{background:linear-gradient(160deg,var(--blue),var(--blue-dim));}
-.card-repair .front{background:linear-gradient(160deg,var(--green),var(--green-dim));}
+.card-defense .front{background:linear-gradient(160deg,var(--green),var(--green-dim));}
+.card-repair .front{background:linear-gradient(160deg,var(--blue),var(--blue-dim));}
 .card-special .front{background:linear-gradient(160deg,var(--purple),var(--purple-dim));}
 .deck-hint{
   text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.08em;
@@ -311,8 +311,8 @@ section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line);
 .cc-meta.dur{color:#6b6046;}
 .cc-body p{font-size:13px; line-height:1.5; margin:2px 0 0; color:var(--ink);}
 .cc-attack .cc-art{background:linear-gradient(155deg,var(--red),var(--red-dim));}
-.cc-defense .cc-art{background:linear-gradient(155deg,var(--blue),var(--blue-dim));}
-.cc-repair .cc-art{background:linear-gradient(155deg,var(--green),var(--green-dim));}
+.cc-defense .cc-art{background:linear-gradient(155deg,var(--green),var(--green-dim));}
+.cc-repair .cc-art{background:linear-gradient(155deg,var(--blue),var(--blue-dim));}
 .cc-special .cc-art{background:linear-gradient(155deg,var(--gold),#8a6c1c);}
 .cc-policy .cc-art{background:linear-gradient(155deg,var(--purple),var(--purple-dim));}
 .cc-note{
@@ -412,6 +412,47 @@ section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line);
     margin-top: 6px;
 }
   
+/* ---------- FAQ ---------- */
+.faq-note{
+  font-family:var(--mono); font-size:11.5px; color:#8fa1bd; line-height:1.6;
+  max-width:78ch; margin:0 0 30px;
+}
+.faq-group{margin-bottom:34px;}
+.faq-group:last-child{margin-bottom:0;}
+.faq-list{display:flex; flex-direction:column; gap:10px;}
+.faq-item{
+  background:var(--paper); color:var(--ink); border-radius:6px;
+  box-shadow:0 8px 20px rgba(0,0,0,.3); overflow:hidden;
+}
+.faq-item summary{
+  list-style:none; cursor:pointer; padding:16px 46px 16px 18px; position:relative;
+  font-family:var(--display); font-size:16.5px; letter-spacing:.01em;
+  display:flex; align-items:center; gap:10px;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary .qtag{
+  font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--red-dim);
+  border:1px solid var(--red-dim); border-radius:2px; padding:1px 6px; flex-shrink:0;
+}
+.faq-item summary::after{
+  content:'+'; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-family:var(--mono); font-size:20px; color:var(--red-dim); transition:transform .25s ease;
+}
+.faq-item[open] summary::after{transform:translateY(-50%) rotate(45deg);}
+.faq-body{padding:0 20px 18px 18px; font-size:14px; line-height:1.6;}
+.faq-body p{margin:0 0 10px;}
+.faq-body p:last-child{margin-bottom:0;}
+.faq-body ul, .faq-body ol{margin:0 0 10px; padding-left:20px;}
+.faq-body .ex{
+  background:var(--paper-dim); border-left:3px solid var(--gold-line); border-radius:2px;
+  padding:10px 12px; margin:10px 0; font-family:var(--mono); font-size:12.5px; line-height:1.7;
+}
+.faq-body .ex .exl{
+  display:block; font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--red-dim); margin-bottom:4px;
+}
+.faq-body strong{color:var(--ink);}
+
 /* ---------- reference table ---------- */
 table.inv{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:13.5px;}
 table.inv th, table.inv td{text-align:left; padding:10px 8px; border-bottom:1px solid #cbbe97;}
@@ -473,6 +514,7 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
       <a href="#winning">Winning</a>
       <a href="#quickref">Quick Ref</a>
       <a href="#jokers">The Jokers</a>
+      <a href="#faq">FAQ</a>
       <a href="#share">Get QR</a>
     </div>
   </div>
@@ -732,7 +774,7 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
     </div>
 
     <div class="cc-group">
-      <div class="cc-subhead">🟦 Defense Cards</div>
+      <div class="cc-subhead">🟩 Defense Cards</div>
       <div class="cc-grid">
         <div class="ccard cc-defense"><div class="cc-art" data-card="firewall" style="background-image:url('assets/cards/firewall.png');"></div><div class="cc-body"><h5>Firewall</h5><span class="cc-meta">Blocks: Data Breach, Hacking</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
         <div class="ccard cc-defense"><div class="cc-art" data-card="ip-protection" style="background-image:url('assets/cards/ip-protection.png');"></div><div class="cc-body"><h5>Intellectual Property Protection</h5><span class="cc-meta">Blocks: Intellectual Property Theft</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
@@ -746,7 +788,7 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
     </div>
 
     <div class="cc-group">
-      <div class="cc-subhead">🟩 Repair Cards</div>
+      <div class="cc-subhead">🟦 Repair Cards</div>
       <div class="cc-grid">
         <div class="ccard cc-repair"><div class="cc-art" data-card="security-update" style="background-image:url('assets/cards/security-update.png');"></div><div class="cc-body"><h5>Security Update</h5><span class="cc-meta">Repairs: Computer Ethics</span><p>Play on your turn to flip your destroyed Computer Ethics card back face-up.</p></div></div>
         <div class="ccard cc-repair"><div class="cc-art" data-card="environmental-cleanup" style="background-image:url('assets/cards/environmental-cleanup.png');"></div><div class="cc-body"><h5>Environmental Cleanup</h5><span class="cc-meta">Repairs: Environmental Ethics</span><p>Play on your turn to flip your destroyed Environmental Ethics card back face-up.</p></div></div>
@@ -857,6 +899,142 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
   </div>
 </section>
 
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">16</span><h2>Frequently Asked Questions</h2></div>
+    <p class="faq-note">Tap a question to expand it.</p>
+
+    <div class="faq-group">
+      <div class="cc-subhead">General Gameplay</div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="qtag">Q1</span>Do I have to draw a card at the beginning of every turn?</summary>
+          <div class="faq-body">
+            <p>Yes. Drawing 1 card during the Draw Phase is mandatory unless an Active Ethics Policy or another card specifically changes this rule.</p>
+            <div class="ex"><span class="exl">Example</span>Start your turn → Draw 1 card → Continue to your Play Phase.</div>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q2</span>Can I skip playing a card after drawing?</summary>
+          <div class="faq-body">
+            <p>Yes. After drawing your mandatory card, you may choose to:</p>
+            <ul>
+              <li>Play one Attack Card,</li>
+              <li>Play one Repair Card,</li>
+              <li>Play one Special/Event Card, or</li>
+              <li>Play no card at all and simply end your turn.</li>
+            </ul>
+            <p>Defense Cards cannot be played during your own turn unless another card specifically allows it.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q3</span>When do I receive new cards?</summary>
+          <div class="faq-body">
+            <p>Players receive new cards by:</p>
+            <ul>
+              <li>Drawing 1 mandatory card at the beginning of every turn.</li>
+              <li>Playing cards that instruct them to draw additional cards (such as Budget Increase or Multinational Expansion).</li>
+            </ul>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q4</span>What happens if the Main Deck runs out of cards?</summary>
+          <div class="faq-body">
+            <p>Shuffle the Discard Pile to create a new Main Deck, then continue drawing normally.</p>
+            <p>Ethics Cards and Ethics Policy Cards are never shuffled into the Main Deck.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="cc-subhead">Ethics Policy Questions</div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="qtag">Q5</span>Under "Do Not Use a Computer to Harm Other People," what happens if I attack the same opponent on consecutive turns?</summary>
+          <div class="faq-body">
+            <p>Your second attack is cancelled. The Attack Card is immediately discarded without resolving its effect. The targeted player does not need to play a Defense Card because the attack never occurs.</p>
+            <div class="ex"><span class="exl">Example</span>Turn 1: Attack Player B ✅<br>Turn 2: Attack Player B again ❌ — the second Attack Card is discarded.</div>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q6</span>Under "Do Not Interfere with Other People's Work," what does "one Attack Card per full round" mean?</summary>
+          <div class="faq-body">
+            <p>A full round means every player has completed one turn. While this policy is active, you may play only one Attack Card during each full round. Once a new round begins, you may attack again.</p>
+            <div class="ex"><span class="exl">Example (4 players)</span>Round 1 — Player A attacks ✅, then Players B, C, and D finish their turns.<br>Round 2 begins — Player A may attack again because a new round has started.</div>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q7</span>Under "Do Not Snoop Around in Other People's Files," what happens to the chosen card?</summary>
+          <div class="faq-body">
+            <p>Normally, Whistleblower lets you steal a card. With this Ethics Policy active: look at the opponent's hand, choose one card, return that card to the Main Deck, then shuffle the Main Deck.</p>
+            <p>The opponent does not draw a replacement card. You also do not gain the selected card.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q8</span>Under "Do Not Bear False Witness," who skips the Draw Phase?</summary>
+          <div class="faq-body">
+            <p>The targeted player skips their next Draw Phase.</p>
+            <div class="ex"><span class="exl">Example</span>Player A plays Fraudulent Report on Player B. Instead of destroying Business Ethics, Player B simply skips drawing a card at the beginning of their next turn. Player A is not affected.</div>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q9</span>Under "Do Not Copy Software You Did Not Pay For," am I eliminated if Computer Ethics is disabled and all my other Ethics Cards are destroyed?</summary>
+          <div class="faq-body">
+            <p>No. A disabled Computer Ethics card still counts as one of your remaining Ethics Cards. At the beginning of your next turn, it automatically returns to its normal active state. You are only eliminated if all four Ethics Cards are destroyed.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q10</span>Under "Use Computers with Consideration and Respect," what happens if the targeted player discards a card?</summary>
+          <div class="faq-body">
+            <p>Before your Attack Card resolves, the targeted player may discard 1 card from their hand. If they do, you must choose another valid opponent for the same Attack Card — you do not discard the Attack Card immediately. If no other legal opponent exists, the Attack Card is discarded and has no effect.</p>
+            <div class="ex"><span class="exl">Example</span>Player A plays Bribery targeting Player B. Player B discards one card. Player A may now target Player C using the same Bribery card. If no other opponent can legally be attacked, Bribery is discarded without affecting anyone.</div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="cc-subhead">Special / Event Cards</div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="qtag">Q11</span>When I play Budget Increase, do I draw my normal card first?</summary>
+          <div class="faq-body">
+            <p>Yes. Your normal Draw Phase always happens first.</p>
+            <div class="ex"><span class="exl">Example</span>Start your turn → Draw 1 mandatory card → Play Budget Increase → Immediately draw 2 additional cards.</div>
+            <p>The two cards from Budget Increase are extra cards and do not replace your normal draw.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q12</span>Can Multinational Expansion let me ignore the Active Ethics Policy?</summary>
+          <div class="faq-body">
+            <p>No. If you choose to play an additional Attack Card, it must still follow all normal game rules and any restrictions imposed by the current Active Ethics Policy.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="cc-subhead">Winning the Game</div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="qtag">Q13</span>When is a player eliminated?</summary>
+          <div class="faq-body">
+            <p>A player is eliminated when all four of their Ethics Cards are destroyed. Disabled Ethics Cards (such as Computer Ethics under "Do Not Copy Software You Did Not Pay For") do not count as destroyed.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary><span class="qtag">Q14</span>What happens when the Ethics Policy changes?</summary>
+          <div class="faq-body">
+            <p>An Ethics Policy changes when three complete rounds have been played, or a Revised Code of Ethics card is played.</p>
+            <p>When a new policy is revealed: the previous Ethics Policy is discarded, the new Ethics Policy immediately becomes active, and all players must follow the new policy from that point onward.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="share">
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">15</span><h2>Share This Rulebook</h2></div>
@@ -963,4 +1141,3 @@ card.addEventListener("click", () => revealCard(card));   // mobile support
 
 </body>
 </html>
-

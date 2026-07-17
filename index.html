@@ -8,336 +8,328 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-  :root{
-    --navy-deep:#0a1930;
-    --navy-panel:#0f2242;
-    --navy-line:#26426c;
-    --paper:#f1ead6;
-    --paper-dim:#e6dcc2;
-    --ink:#1c1508;
-    --red:#c4272f;
-    --red-dim:#7a1a20;
-    --blue:#2b5a8c;
-    --blue-dim:#1c3c5e;
-    --green:#2f7a52;
-    --green-dim:#1f5138;
-    --purple:#6b4a96;
-    --purple-dim:#4a3268;
-    --gold:#d4a72c;
-    --gold-line:#8a6c1c;
-    --display: 'Bebas Neue', sans-serif;
-    --body: 'Source Serif 4', Georgia, serif;
-    --mono: 'IBM Plex Mono', monospace;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--navy-deep);
-    color:var(--paper);
-    font-family:var(--body);
-    -webkit-font-smoothing:antialiased;
-  }
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
-  }
+:root{
+  --navy-deep:#0a1930;
+  --navy-panel:#0f2242;
+  --navy-line:#26426c;
+  --paper:#f1ead6;
+  --paper-dim:#e6dcc2;
+  --ink:#1c1508;
+  --red:#c4272f;
+  --red-dim:#7a1a20;
+  --blue:#2b5a8c;
+  --blue-dim:#1c3c5e;
+  --green:#2f7a52;
+  --green-dim:#1f5138;
+  --purple:#6b4a96;
+  --purple-dim:#4a3268;
+  --gold:#d4a72c;
+  --gold-line:#8a6c1c;
+  --display: 'Bebas Neue', sans-serif;
+  --body: 'Source Serif 4', Georgia, serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--navy-deep);
+  color:var(--paper);
+  font-family:var(--body);
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+}
 
-  a{color:inherit;}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+a{color:inherit;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
 
-  /* ---------- background texture ---------- */
-  .grid-bg{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
-    background-image:
-      linear-gradient(var(--navy-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--navy-line) 1px, transparent 1px);
-    background-size:64px 64px;
-    opacity:.14;
-  }
+/* ---------- background texture ---------- */
+.grid-bg{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(var(--navy-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--navy-line) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:.14;
+}
 
-  /* ---------- top nav ---------- */
-  .topnav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(10,25,48,.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--navy-line);
-  }
-  .topnav-inner{
-    max-width:1120px;margin:0 auto;padding:0 28px;
-    display:flex; align-items:center; gap:22px;
-    height:56px; overflow-x:auto;
-  }
-  .topnav .brand{
-    font-family:var(--display); letter-spacing:.05em; font-size:20px;
-    color:var(--gold); white-space:nowrap; flex-shrink:0;
-    text-decoration:none;
-  }
-  .topnav .links{display:flex; gap:18px; white-space:nowrap;}
-  .topnav .links a{
-    font-family:var(--mono); font-size:11px; letter-spacing:.08em;
-    text-transform:uppercase; color:#b9c4d6; text-decoration:none;
-    padding:6px 2px; border-bottom:2px solid transparent;
-  }
-  .topnav .links a:hover{color:var(--paper); border-bottom-color:var(--gold);}
+/* ---------- top nav ---------- */
+.topnav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(10,25,48,.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--navy-line);
+}
+.topnav-inner{
+  max-width:1120px;margin:0 auto;padding:0 28px;
+  display:flex; align-items:center; gap:22px;
+  height:56px; overflow-x:auto;
+}
+.topnav .brand{
+  font-family:var(--display); letter-spacing:.05em; font-size:20px;
+  color:var(--gold); white-space:nowrap; flex-shrink:0;
+  text-decoration:none;
+}
+.topnav .links{display:flex; gap:18px; white-space:nowrap;}
+.topnav .links a{
+  font-family:var(--mono); font-size:11px; letter-spacing:.08em;
+  text-transform:uppercase; color:#b9c4d6; text-decoration:none;
+  padding:6px 2px; border-bottom:2px solid transparent;
+}
+.topnav .links a:hover{color:var(--paper); border-bottom-color:var(--gold);}
 
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative; z-index:1;
-    padding:72px 0 56px;
-    border-bottom:1px solid var(--navy-line);
-    overflow:hidden;
-  }
-  .hero-inner{display:flex; align-items:center; gap:40px; flex-wrap:wrap;}
-  .hero-text{flex:1 1 420px; min-width:280px;}
-  .eyebrow{
-    font-family:var(--mono); font-size:12px; letter-spacing:.18em;
-    color:var(--gold); text-transform:uppercase; margin:0 0 14px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .eyebrow::before{content:''; width:26px; height:1px; background:var(--gold);}
-  .hero h1{
-    font-family:var(--display); font-size:clamp(52px,9vw,96px);
-    line-height:.92; margin:0; letter-spacing:.01em;
-    color:var(--paper);
-  }
-  .hero h1 span{color:var(--red); display:block;}
-  .hero p{
-    font-size:18px; line-height:1.6; color:#cdd6e4; max-width:46ch;
-    margin:20px 0 26px;
-  }
-  .hero-cta{display:flex; gap:12px; flex-wrap:wrap;}
-  .btn{
-    font-family:var(--mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase;
-    padding:13px 22px; border-radius:2px; text-decoration:none; cursor:pointer;
-    border:1px solid transparent; display:inline-flex; align-items:center; gap:8px;
-  }
-  .btn-primary{background:var(--red); color:#fff; border-color:var(--red);}
-  .btn-primary:hover{background:#a91f26;}
-  .btn-ghost{border-color:var(--navy-line); color:var(--paper);}
-  .btn-ghost:hover{border-color:var(--gold); color:var(--gold);}
+/* ---------- hero ---------- */
+.hero{
+  position:relative; z-index:1;
+  padding:72px 0 56px;
+  border-bottom:1px solid var(--navy-line);
+  overflow:hidden;
+}
+.hero-inner{display:flex; align-items:center; gap:40px; flex-wrap:wrap;}
+.hero-text{flex:1 1 420px; min-width:280px;}
+.eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.18em;
+  color:var(--gold); text-transform:uppercase; margin:0 0 14px;
+  display:flex; align-items:center; gap:10px;
+}
+.eyebrow::before{content:''; width:26px; height:1px; background:var(--gold);}
+.hero h1{
+  font-family:var(--display); font-size:clamp(52px,9vw,96px);
+  line-height:.92; margin:0; letter-spacing:.01em;
+  color:var(--paper);
+}
+.hero h1 span{color:var(--red); display:block;}
+.hero p{
+  font-size:18px; line-height:1.6; color:#cdd6e4; max-width:46ch;
+  margin:20px 0 26px;
+}
+.hero-cta{display:flex; gap:12px; flex-wrap:wrap;}
+.btn{
+  font-family:var(--mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+  padding:13px 22px; border-radius:2px; text-decoration:none; cursor:pointer;
+  border:1px solid transparent; display:inline-flex; align-items:center; gap:8px;
+}
+.btn-primary{background:var(--red); color:#fff; border-color:var(--red);}
+.btn-primary:hover{opacity:.9;}
+.btn-ghost{border-color:var(--navy-line); color:var(--paper);}
+.btn-ghost:hover{border-color:var(--gold); color:var(--gold);}
 
-  /* fanned card graphic */
-  .card-fan{position:relative; width:280px; height:220px; flex-shrink:0; margin:0 auto;}
-  .fan-card{
-    position:absolute; width:130px; height:180px; border-radius:10px;
-    top:20px; left:75px;
-    border:2px solid rgba(241,234,214,.5);
-    box-shadow:0 18px 40px rgba(0,0,0,.45);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    font-family:var(--display); letter-spacing:.04em; color:#fff; font-size:15px;
-    transition:transform .35s ease;
-  }
-  .fan-card .glyph{font-size:34px; margin-bottom:8px;}
-  .fan-card.c1{background:linear-gradient(160deg,var(--red),var(--red-dim)); transform:rotate(-16deg) translate(-58px,6px);}
-  .fan-card.c2{background:linear-gradient(160deg,var(--blue),var(--blue-dim)); transform:rotate(-5deg) translate(-22px,-4px);}
-  .fan-card.c3{background:linear-gradient(160deg,var(--green),var(--green-dim)); transform:rotate(6deg) translate(14px,-4px);}
-  .fan-card.c4{background:linear-gradient(160deg,var(--purple),var(--purple-dim)); transform:rotate(16deg) translate(50px,6px);}
-  .card-fan:hover .fan-card{transform:rotate(0deg) translate(0,-10px);}
+/* fanned card graphic */
+.card-fan{position:relative; width:280px; height:220px; flex-shrink:0; margin:0 auto;}
+.fan-card{
+  position:absolute; width:130px; height:180px; border-radius:10px;
+  top:20px; left:75px;
+  border:2px solid rgba(241,234,214,.5);
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  font-family:var(--display); letter-spacing:.04em; color:#fff; font-size:15px;
+  transition:transform .35s ease;
+}
+.fan-card .glyph{font-size:34px; margin-bottom:8px;}
+.fan-card.c1{background:linear-gradient(160deg,var(--red),var(--red-dim)); transform:rotate(-16deg) translate(-58px,6px);}
+.fan-card.c2{background:linear-gradient(160deg,var(--blue),var(--blue-dim)); transform:rotate(-5deg) translate(-22px,-4px);}
+.fan-card.c3{background:linear-gradient(160deg,var(--green),var(--green-dim)); transform:rotate(6deg) translate(14px,-4px);}
+.fan-card.c4{background:linear-gradient(160deg,var(--purple),var(--purple-dim)); transform:rotate(16deg) translate(50px,6px);}
+.card-fan .fan-card:hover{transform:rotate(0deg) translate(0,-10px);}
 
-  /* ---------- section shell ---------- */
-  section{position:relative; z-index:1; padding:64px 0;}
-  section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line); border-bottom:1px solid var(--navy-line);}
-  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:34px; flex-wrap:wrap;}
-  .sec-num{
-    font-family:var(--mono); font-size:14px; color:var(--gold); border:1px solid var(--gold-line);
-    padding:3px 9px; border-radius:2px;
-  }
-  .sec-head h2{
-    font-family:var(--display); font-size:clamp(30px,4vw,44px); letter-spacing:.02em; margin:0; color:var(--paper);
-  }
-  .sec-sub{font-family:var(--mono); font-size:12px; color:#8fa1bd; text-transform:uppercase; letter-spacing:.08em;}
+/* ---------- section shell ---------- */
+section{position:relative; z-index:1; padding:64px 0;}
+section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line); border-bottom:1px solid var(--navy-line);}
+.sec-head{display:flex; align-items:center; gap:16px; margin-bottom:34px; flex-wrap:wrap;}
+.sec-num{
+  font-family:var(--mono); font-size:14px; color:var(--gold); border:1px solid var(--gold-line);
+  padding:3px 9px; border-radius:2px;
+}
+.sec-head h2{
+  font-family:var(--display); font-size:clamp(30px,4vw,44px); letter-spacing:.02em; margin:0; color:var(--paper);
+}
+.sec-sub{font-family:var(--mono); font-size:12px; color:#8fa1bd; text-transform:uppercase; letter-spacing:.08em;}
 
-  /* ---------- paper panels for readable text ---------- */
-  .panel{
-    background:var(--paper); color:var(--ink); border-radius:4px;
-    padding:26px 28px; box-shadow:0 12px 30px rgba(0,0,0,.35);
-  }
-  .panel h3{font-family:var(--display); font-size:22px; letter-spacing:.02em; margin:0 0 10px; color:var(--ink);}
-  .panel p, .panel li{font-size:15.5px; line-height:1.62;}
-  .panel ul, .panel ol{margin:8px 0 0; padding-left:20px;}
+/* ---------- paper panels for readable text ---------- */
+.panel{
+  background:var(--paper); color:var(--ink); border-radius:4px;
+  padding:26px 28px; box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+.panel h3{font-family:var(--display); font-size:22px; letter-spacing:.02em; margin:0 0 10px; color:var(--ink);}
+.panel p, .panel li{font-size:15.5px; line-height:1.62;}
+.panel ul, .panel ol{margin:8px 0 0; padding-left:20px;}
 
-  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
-  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
-  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-  @media(max-width:860px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}}
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+.grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+@media(max-width:860px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}}
 
-  /* ---------- component tally ---------- */
-  .tally-row{display:flex; justify-content:space-between; align-items:baseline; padding:10px 0; border-bottom:1px dashed #b9ab86;}
-  .tally-row:last-child{border-bottom:none;}
-  .tally-row .num{font-family:var(--mono); font-weight:600; font-size:17px;}
-  .tally-total{border-top:2px solid var(--ink); margin-top:6px; padding-top:12px; font-weight:700;}
+/* ---------- component tally ---------- */
+.tally-row{display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px dashed #b9ab86;}
+.tally-row:last-child{border-bottom:none;}
+.tally-row .num{font-family:var(--mono); font-weight:600; font-size:17px;}
+.tally-total{border-top:2px solid var(--ink); margin-top:6px; padding-top:12px; font-weight:700;}
 
-  /* ---------- setup steps ---------- */
-  .steps{counter-reset:step;}
-  .step{display:flex; gap:14px; margin-bottom:16px;}
-  .step::before{
-    counter-increment:step; content:counter(step);
-    font-family:var(--display); font-size:20px; color:var(--red);
-    border:2px solid var(--red); border-radius:50%; width:34px; height:34px;
-    flex-shrink:0; display:flex; align-items:center; justify-content:center;
-  }
+/* ---------- setup steps ---------- */
+.steps{counter-reset:step;}
+.step{display:flex; gap:14px; margin-bottom:16px; align-items:flex-start;}
+.step::before{
+  counter-increment:step; content:counter(step);
+  font-family:var(--display); font-size:20px; color:var(--red);
+  border:2px solid var(--red); border-radius:50%; width:34px; height:34px;
+  flex-shrink:0; display:flex; align-items:center; justify-content:center;
+}
 
-  /* ---------- turn cycle ---------- */
-  .cycle{display:flex; flex-wrap:wrap; gap:16px; justify-content:center; align-items:stretch;}
-  .cycle-step{
-    flex:1 1 190px; background:var(--paper); color:var(--ink); border-radius:4px; padding:20px;
-    text-align:center; position:relative;
-  }
-  .cycle-step .n{font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--red-dim);}
-  .cycle-step h4{font-family:var(--display); font-size:19px; margin:6px 0 8px;}
-  .cycle-step p{font-size:14px; line-height:1.5; margin:0;}
-  .cycle-arrow{align-self:center; font-size:22px; color:var(--gold); flex:0 0 auto;}
-  @media(max-width:760px){.cycle-arrow{transform:rotate(90deg);}}
+/* ---------- turn cycle ---------- */
+.cycle{display:flex; flex-wrap:wrap; gap:16px; justify-content:center; align-items:center;}
+.cycle-step{
+  flex:1 1 190px; background:var(--paper); color:var(--ink); border-radius:4px; padding:20px;
+  text-align:center; position:relative;
+}
+.cycle-step .n{font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--red-dim);}
+.cycle-step h4{font-family:var(--display); font-size:19px; margin:6px 0 8px;}
+.cycle-step p{font-size:14px; line-height:1.5; margin:0;}
+.cycle-arrow{align-self:center; font-size:22px; color:var(--gold); flex:0 0 auto;}
+@media(max-width:760px){.cycle-arrow{transform:rotate(90deg);}}
 
-  /* ---------- ethics category flip cards ---------- */
-  .ethic-card{
-    perspective:1400px; height:250px;
-  }
-  .ethic-card-inner{
-    position:relative; width:100%; height:100%; transition:transform .6s cubic-bezier(.2,.8,.2,1);
-    transform-style:preserve-3d; border-radius:6px;
-  }
-  .ethic-card:hover .ethic-card-inner, .ethic-card:focus-within .ethic-card-inner{transform:rotateY(180deg);}
-  .ethic-face{
-    position:absolute; inset:0; backface-visibility:hidden; border-radius:6px;
-    padding:22px; display:flex; flex-direction:column;
-    box-shadow:0 14px 28px rgba(0,0,0,.4);
-  }
-  .ethic-face.front{
-    color:#fff; justify-content:center; align-items:flex-start;
-  }
-  .ethic-face.front .glyph{font-size:38px; margin-bottom:12px;}
-  .ethic-face.front h4{font-family:var(--display); font-size:24px; letter-spacing:.02em; margin:0;}
-  .ethic-face.front .tap{
-    margin-top:auto; font-family:var(--mono); font-size:10px; letter-spacing:.1em;
-    text-transform:uppercase; opacity:.8;
-  }
-  .ethic-face.back{
-    background:var(--paper); color:var(--ink); transform:rotateY(180deg);
-    justify-content:center;
-  }
-  .ethic-face.back .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--red-dim); margin-bottom:8px;}
-  .ethic-face.back ul{margin:0; padding-left:18px; font-size:14.5px; line-height:1.6;}
-  .cat-business .front{background:linear-gradient(155deg,var(--gold),#8a6c1c);}
-  .cat-computer .front{background:linear-gradient(155deg,var(--blue),var(--blue-dim));}
-  .cat-environmental .front{background:linear-gradient(155deg,var(--green),var(--green-dim));}
-  .cat-management .front{background:linear-gradient(155deg,var(--purple),var(--purple-dim));}
+/* ---------- ethics category flip cards ---------- */
+.ethic-card{
+  perspective:1400px; height:250px;
+}
+.ethic-card-inner{
+  position:relative; width:100%; height:100%; transition:transform .6s cubic-bezier(.2,.8,.2,1);
+  transform-style:preserve-3d; border-radius:6px;
+}
+.ethic-card:hover .ethic-card-inner, .ethic-card:focus .ethic-card-inner{transform:rotateY(180deg);}
+.ethic-face{
+  position:absolute; inset:0; backface-visibility:hidden; border-radius:6px;
+  padding:22px; display:flex; flex-direction:column;
+  box-shadow:0 14px 28px rgba(0,0,0,.4);
+}
+.ethic-face.front{
+  color:#fff; justify-content:center; align-items:center;
+}
+.ethic-face.front .glyph{font-size:38px; margin-bottom:12px;}
+.ethic-face.front h4{font-family:var(--display); font-size:24px; letter-spacing:.02em; margin:0;}
+.ethic-face.front .tap{
+  margin-top:auto; font-family:var(--mono); font-size:10px; letter-spacing:.1em;
+  text-transform:uppercase; opacity:.8;
+}
+.ethic-face.back{
+  background:var(--paper); color:var(--ink); transform:rotateY(180deg);
+  justify-content:center;
+}
+.ethic-face.back .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--red-dim); margin-bottom:8px;}
+.ethic-face.back ul{margin:0; padding-left:18px; font-size:14.5px; line-height:1.6;}
+.cat-business .front{background:linear-gradient(155deg,var(--gold),#8a6c1c);}
+.cat-computer .front{background:linear-gradient(155deg,var(--blue),var(--blue-dim));}
+.cat-environmental .front{background:linear-gradient(155deg,var(--green),var(--green-dim));}
+.cat-management .front{background:linear-gradient(155deg,var(--purple),var(--purple-dim));}
 
-  /* ---------- action card gallery (signature element) ---------- */
-  .deck-gallery{display:flex; gap:26px; flex-wrap:wrap; justify-content:center;}
-  .action-card{
-    perspective:1400px; width:190px; height:270px;
-  }
-  .action-card-inner{
-    position:relative; width:100%; height:100%; transition:transform .55s cubic-bezier(.2,.8,.2,1);
-    transform-style:preserve-3d; cursor:pointer;
-  }
-  .action-card.flipped .action-card-inner{transform:rotateY(180deg);}
-  .action-face{
-    position:absolute; inset:0; backface-visibility:hidden; border-radius:12px;
-    border:2px solid rgba(241,234,214,.55);
-    box-shadow:0 16px 34px rgba(0,0,0,.5);
-    padding:18px; display:flex; flex-direction:column;
-  }
-  .action-face.front{color:#fff; align-items:center; justify-content:center; text-align:center;}
-  .action-face.front .glyph{font-size:46px; margin-bottom:14px;}
-  .action-face.front h4{font-family:var(--display); font-size:24px; letter-spacing:.03em; margin:0 0 6px;}
-  .action-face.front .count{font-family:var(--mono); font-size:11px; opacity:.85;}
-  .action-face.front .flip-hint{position:absolute; bottom:14px; font-family:var(--mono); font-size:9px; letter-spacing:.1em; opacity:.7;}
-  .action-face.back{
-    background:var(--paper); color:var(--ink); transform:rotateY(180deg); justify-content:flex-start;
-  }
-  .action-face.back .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--red-dim); margin-bottom:8px;}
-  .action-face.back p{font-size:13.5px; line-height:1.55; margin:0;}
-  .action-face.back ul{font-size:13px; line-height:1.55; margin:6px 0 0; padding-left:16px;}
-  .card-attack .front{background:linear-gradient(160deg,var(--red),var(--red-dim));}
-  .card-defense .front{background:linear-gradient(160deg,var(--blue),var(--blue-dim));}
-  .card-repair .front{background:linear-gradient(160deg,var(--green),var(--green-dim));}
-  .card-special .front{background:linear-gradient(160deg,var(--purple),var(--purple-dim));}
-  .deck-hint{
-    text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.08em;
-    text-transform:uppercase; color:#8fa1bd; margin-bottom:28px;
-  }
+/* ---------- action card gallery (signature element) ---------- */
+.deck-gallery{display:flex; gap:26px; flex-wrap:wrap; justify-content:center;}
+.action-card{
+  perspective:1400px; width:190px; height:270px;
+}
+.action-card-inner{
+  position:relative; width:100%; height:100%; transition:transform .55s cubic-bezier(.2,.8,.2,1);
+  transform-style:preserve-3d; cursor:pointer;
+}
+.action-card.flipped .action-card-inner{transform:rotateY(180deg);}
+.action-face{
+  position:absolute; inset:0; backface-visibility:hidden; border-radius:12px;
+  border:2px solid rgba(241,234,214,.55);
+  box-shadow:0 16px 34px rgba(0,0,0,.5);
+  padding:18px; display:flex; flex-direction:column;
+}
+.action-face.front{color:#fff; align-items:center; justify-content:center; text-align:center;}
+.action-face.front .glyph{font-size:46px; margin-bottom:14px;}
+.action-face.front h4{font-family:var(--display); font-size:24px; letter-spacing:.03em; margin:0 0 6px;}
+.action-face.front .count{font-family:var(--mono); font-size:11px; opacity:.85;}
+.action-face.front .flip-hint{position:absolute; bottom:14px; font-family:var(--mono); font-size:9px; letter-spacing:.1em; opacity:.7;}
+.action-face.back{
+  background:var(--paper); color:var(--ink); transform:rotateY(180deg); justify-content:center;
+}
+.action-face.back .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--red-dim); margin-bottom:8px;}
+.action-face.back p{font-size:13.5px; line-height:1.55; margin:0;}
+.action-face.back ul{font-size:13px; line-height:1.55; margin:6px 0 0; padding-left:16px;}
+.card-attack .front{background:linear-gradient(160deg,var(--red),var(--red-dim));}
+.card-defense .front{background:linear-gradient(160deg,var(--blue),var(--blue-dim));}
+.card-repair .front{background:linear-gradient(160deg,var(--green),var(--green-dim));}
+.card-special .front{background:linear-gradient(160deg,var(--purple),var(--purple-dim));}
+.deck-hint{
+  text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.08em;
+  text-transform:uppercase; color:#8fa1bd; margin-bottom:28px;
+}
 
-  /* ---------- policy list ---------- */
-  .policy-deck{display:flex; gap:26px; align-items:flex-start; flex-wrap:wrap;}
-  .policy-card-visual{
-    width:170px; height:230px; border-radius:10px; flex-shrink:0;
-    background:linear-gradient(165deg,var(--purple),#33224a);
-    border:2px solid rgba(241,234,214,.5); box-shadow:0 16px 34px rgba(0,0,0,.5);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff;
-    margin:0 auto;
-  }
-  .policy-card-visual .glyph{font-size:40px; margin-bottom:12px;}
-  .policy-card-visual h4{font-family:var(--display); font-size:20px; margin:0; letter-spacing:.03em;}
-  .policy-list{flex:1 1 320px; background:var(--paper); color:var(--ink); border-radius:4px; padding:22px 26px; box-shadow:0 12px 30px rgba(0,0,0,.35);}
-  .policy-list ol{margin:0; padding-left:20px;}
-  .policy-list li{font-size:14.5px; line-height:1.85;}
+/* ---------- policy list ---------- */
+.policy-deck{display:flex; gap:26px; align-items:center; flex-wrap:wrap;}
+.policy-card-visual{
+  width:170px; height:230px; border-radius:10px; flex-shrink:0;
+  background:linear-gradient(165deg,var(--purple),#33224a);
+  border:2px solid rgba(241,234,214,.5); box-shadow:0 16px 34px rgba(0,0,0,.5);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff;
+  margin:0 auto;
+}
+.policy-card-visual .glyph{font-size:40px; margin-bottom:12px;}
+.policy-card-visual h4{font-family:var(--display); font-size:20px; margin:0; letter-spacing:.03em;}
+.policy-list{flex:1 1 320px; background:var(--paper); color:var(--ink); border-radius:4px; padding:22px 26px; box-shadow:0 12px 30px rgba(0,0,0,.35);}
+.policy-list ol{margin:0; padding-left:20px;}
+.policy-list li{font-size:14.5px; line-height:1.85;}
 
-  /* ---------- card compendium ---------- */
-  .cc-group{margin-bottom:38px;}
-  .cc-group:last-child{margin-bottom:0;}
-  .cc-subhead{
-    display:flex; align-items:center; gap:12px; margin:0 0 16px;
-    font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--gold);
-  }
-  .cc-subhead::after{content:''; flex:1; height:1px; background:var(--navy-line);}
-  .cc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-  @media(max-width:860px){.cc-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:540px){.cc-grid{grid-template-columns:1fr;}}
-  .ccard{
-    background:var(--paper); color:var(--ink); border-radius:8px; overflow:hidden;
-    box-shadow:0 10px 24px rgba(0,0,0,.35); display:flex; flex-direction:column;
-  }
-  .cc-art{
-    height:130px; display:flex; align-items:center; justify-content:center;
-    position:relative; flex-shrink:0;
-    background-size:cover; background-position:center; background-repeat:no-repeat;
-  }
-  .cc-art .cc-glyph{font-size:30px; opacity:.92; filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));}
-  .cc-art .cc-pending{
-    position:absolute; bottom:6px; right:8px;
-    font-family:var(--mono); font-size:8px; letter-spacing:.08em; text-transform:uppercase;
-    color:rgba(255,255,255,.6);
-  }
-  .cc-body{padding:13px 15px 16px; display:flex; flex-direction:column; gap:4px; flex:1;}
-  .cc-body h5{font-family:var(--display); font-size:17px; letter-spacing:.02em; margin:0;}
-  .cc-meta{
-    font-family:var(--mono); font-size:9.5px; letter-spacing:.05em; text-transform:uppercase;
-    color:var(--red-dim);
-  }
-  .cc-meta.dur{color:#6b6046;}
-  .cc-body p{font-size:13px; line-height:1.5; margin:2px 0 0; color:var(--ink);}
-  .cc-attack .cc-art{background:linear-gradient(155deg,var(--red),var(--red-dim));}
-  .cc-defense .cc-art{background:linear-gradient(155deg,var(--blue),var(--blue-dim));}
-  .cc-repair .cc-art{background:linear-gradient(155deg,var(--green),var(--green-dim));}
-  .cc-special .cc-art{background:linear-gradient(155deg,var(--gold),#8a6c1c);}
-  .cc-policy .cc-art{background:linear-gradient(155deg,var(--purple),var(--purple-dim));}
-  .cc-note{
-    font-family:var(--mono); font-size:11.5px; color:#8fa1bd; line-height:1.6;
-    max-width:78ch; margin:0 0 30px;
-  }
+/* ---------- card compendium ---------- */
+.cc-group{margin-bottom:38px;}
+.cc-group:last-child{margin-bottom:0;}
+.cc-subhead{
+  display:flex; align-items:center; gap:12px; margin:0 0 16px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gold);
+}
+.cc-subhead::after{content:''; flex:1; height:1px; background:var(--navy-line);}
+.cc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+@media(max-width:860px){.cc-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:540px){.cc-grid{grid-template-columns:1fr;}}
+.ccard{
+  background:var(--paper); color:var(--ink); border-radius:8px; overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.35); display:flex; flex-direction:column;
+}
+.cc-art{
+  height:130px; display:flex; align-items:center; justify-content:center;
+  position:relative; flex-shrink:0;
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+}
+.cc-art .cc-glyph{font-size:30px; opacity:.92; filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));}
+.cc-art .cc-pending{
+  position:absolute; bottom:6px; right:8px;
+  font-family:var(--mono); font-size:8px; letter-spacing:.08em; text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+}
+.cc-body{padding:13px 15px 16px; display:flex; flex-direction:column; gap:4px; flex:1;}
+.cc-body h5{font-family:var(--display); font-size:17px; letter-spacing:.02em; margin:0;}
+.cc-meta{
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--red-dim);
+}
+.cc-meta.dur{color:#6b6046;}
+.cc-body p{font-size:13px; line-height:1.5; margin:2px 0 0; color:var(--ink);}
+.cc-attack .cc-art{background:linear-gradient(155deg,var(--red),var(--red-dim));}
+.cc-defense .cc-art{background:linear-gradient(155deg,var(--blue),var(--blue-dim));}
+.cc-repair .cc-art{background:linear-gradient(155deg,var(--green),var(--green-dim));}
+.cc-special .cc-art{background:linear-gradient(155deg,var(--gold),#8a6c1c);}
+.cc-policy .cc-art{background:linear-gradient(155deg,var(--purple),var(--purple-dim));}
+.cc-note{
+  font-family:var(--mono); font-size:11.5px; color:#8fa1bd; line-height:1.6;
+  max-width:78ch; margin:0 0 30px;
+}
 
-  /* ---------- the jokers (creators) ---------- */
-  .jokers-intro{
-    font-family:var(--mono); font-size:13px; color:#8fa1bd; line-height:1.7;
-    max-width:70ch; margin:0 0 32px;
-  }
-  .jokers-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
-  }
-  @media(max-width:900px){.jokers-grid{grid-template-columns:repeat(3,1fr);}}
-  @media(max-width:640px){.jokers-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:400px){.jokers-grid{grid-template-columns:1fr;}}
-  /* ---------- the jokers (random reveal) ---------- */
+/* ---------- the jokers (random reveal) ---------- */
+.jokers-intro{
+  font-family:var(--mono); font-size:13px; color:#8fa1bd; line-height:1.7;
+  max-width:70ch; margin:0 0 32px;
+}
 .jokers-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:20px;
 }
-
 @media(max-width:900px){.jokers-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:640px){.jokers-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:400px){.jokers-grid{grid-template-columns:1fr;}}
@@ -383,12 +375,15 @@
 .joker-back{
   transform:rotateY(180deg);
   background:var(--paper);
+  display:flex;
+  flex-direction:column;
 }
 
 .joker-photo{
   aspect-ratio:5/7;
   background-size:cover;
   background-position:center;
+  background-color:var(--paper-dim);
 }
 
 .joker-body{
@@ -411,47 +406,48 @@
   color:var(--red-dim);
   margin-top:4px;
 }
-  /* ---------- reference table ---------- */
-  table.inv{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:13.5px;}
-  table.inv th, table.inv td{text-align:left; padding:10px 8px; border-bottom:1px solid #cbbe97;}
-  table.inv th{text-transform:uppercase; letter-spacing:.06em; font-size:11px; color:var(--red-dim);}
-  table.inv tr:last-child td{font-weight:700; border-top:2px solid var(--ink); border-bottom:none;}
 
-  .quickref{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
-  @media(max-width:760px){.quickref{grid-template-columns:1fr 1fr;}}
-  .qr-item{background:var(--paper); color:var(--ink); border-radius:4px; padding:16px; text-align:center;}
-  .qr-item .glyph{font-size:26px;}
-  .qr-item p{font-family:var(--mono); font-size:11.5px; line-height:1.5; margin:8px 0 0;}
+/* ---------- reference table ---------- */
+table.inv{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:13.5px;}
+table.inv th, table.inv td{text-align:left; padding:10px 8px; border-bottom:1px solid #cbbe97;}
+table.inv th{text-transform:uppercase; letter-spacing:.06em; font-size:11px; color:var(--red-dim);}
+table.inv tr:last-child td{font-weight:700; border-top:2px solid var(--ink); border-bottom:none;}
 
-  /* ---------- QR share section ---------- */
-  .share-box{
-    background:var(--paper); color:var(--ink); border-radius:6px; padding:34px;
-    display:flex; gap:34px; flex-wrap:wrap; align-items:center; justify-content:center;
-    box-shadow:0 16px 40px rgba(0,0,0,.4);
-  }
-  .share-box .qr-target{
-    background:#fff; padding:14px; border-radius:4px; border:1px solid #d8cba0;
-    width:190px; height:190px; display:flex; align-items:center; justify-content:center;
-  }
-  .share-text{max-width:360px;}
-  .share-text h3{font-family:var(--display); font-size:24px; margin:0 0 10px;}
-  .share-text p{font-size:14.5px; line-height:1.6; margin:0 0 16px;}
-  .url-row{display:flex; gap:8px; flex-wrap:wrap;}
-  .url-row input{
-    flex:1 1 220px; font-family:var(--mono); font-size:13px; padding:10px 12px;
-    border:1px solid #b9ab86; border-radius:2px; background:#fffdf6;
-  }
-  .url-row button{
-    font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em;
-    background:var(--ink); color:var(--paper); border:none; padding:0 16px; border-radius:2px; cursor:pointer;
-  }
-  .url-row button:hover{background:#3a2e15;}
-  .share-note{font-family:var(--mono); font-size:11px; color:#6b6046; margin-top:10px; line-height:1.6;}
+.quickref{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+@media(max-width:760px){.quickref{grid-template-columns:1fr 1fr;}}
+.qr-item{background:var(--paper); color:var(--ink); border-radius:4px; padding:16px; text-align:center;}
+.qr-item .glyph{font-size:26px;}
+.qr-item p{font-family:var(--mono); font-size:11.5px; line-height:1.5; margin:8px 0 0;}
 
-  footer{padding:36px 0 50px; text-align:center;}
-  footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:.05em;}
+/* ---------- QR share section ---------- */
+.share-box{
+  background:var(--paper); color:var(--ink); border-radius:6px; padding:34px;
+  display:flex; gap:34px; flex-wrap:wrap; align-items:center; justify-content:center;
+  box-shadow:0 16px 40px rgba(0,0,0,.4);
+}
+.share-box .qr-target{
+  background:#fff; padding:14px; border-radius:4px; border:1px solid #d8cba0;
+  width:190px; height:190px; display:flex; align-items:center; justify-content:center;
+}
+.share-text{max-width:360px;}
+.share-text h3{font-family:var(--display); font-size:24px; margin:0 0 10px;}
+.share-text p{font-size:14.5px; line-height:1.6; margin:0 0 16px;}
+.url-row{display:flex; gap:8px; flex-wrap:wrap;}
+.url-row input{
+  flex:1 1 220px; font-family:var(--mono); font-size:13px; padding:10px 12px;
+  border:1px solid #b9ab86; border-radius:2px; background:#fffdf6;
+}
+.url-row button{
+  font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:0 16px; border-radius:2px; cursor:pointer;
+}
+.url-row button:hover{opacity:.85;}
+.share-note{font-family:var(--mono); font-size:11px; color:#6b6046; margin-top:10px; line-height:1.6;}
 
-  ::selection{background:var(--gold); color:var(--navy-deep);}
+footer{padding:36px 0 50px; text-align:center;}
+footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:.05em;}
+
+::selection{background:var(--gold); color:var(--navy-deep);}
 </style>
 </head>
 <body>
@@ -558,7 +554,7 @@
     <div class="grid-4">
       <div class="ethic-card" tabindex="0">
         <div class="ethic-card-inner">
-          <div class="ethic-face front cat-business" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/business-ethics.png&#39;) center/cover no-repeat;"><span class="glyph">💼</span><h4>Business Ethics</h4><span class="tap">Tap to see counters</span></div>
+          <div class="ethic-face front cat-business" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url('assets/cards/business-ethics.png') center/cover no-repeat;"><span class="glyph">💼</span><h4>Business Ethics</h4><span class="tap">Tap to see counters</span></div>
           <div class="ethic-face back">
             <p style="font-size:12.5px; margin:0 0 8px; line-height:1.5;">Honesty, integrity, fairness, and responsible business practices.</p>
             <div class="lbl">Destroyed by</div>
@@ -570,7 +566,7 @@
       </div>
       <div class="ethic-card" tabindex="0">
         <div class="ethic-card-inner">
-          <div class="ethic-face front cat-computer" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/computer-ethics.png&#39;) center/cover no-repeat;"><span class="glyph">💻</span><h4>Computer Ethics</h4><span class="tap">Tap to see counters</span></div>
+          <div class="ethic-face front cat-computer" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url('assets/cards/computer-ethics.png') center/cover no-repeat;"><span class="glyph">💻</span><h4>Computer Ethics</h4><span class="tap">Tap to see counters</span></div>
           <div class="ethic-face back">
             <p style="font-size:12.5px; margin:0 0 8px; line-height:1.5;">Cybersecurity, privacy, intellectual property, and ethical computing.</p>
             <div class="lbl">Destroyed by</div>
@@ -582,7 +578,7 @@
       </div>
       <div class="ethic-card" tabindex="0">
         <div class="ethic-card-inner">
-          <div class="ethic-face front cat-environmental" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/environmental-ethics.png&#39;) center/cover no-repeat;"><span class="glyph">🌿</span><h4>Environmental Ethics</h4><span class="tap">Tap to see counters</span></div>
+          <div class="ethic-face front cat-environmental" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url('assets/cards/environmental-ethics.png') center/cover no-repeat;"><span class="glyph">🌿</span><h4>Environmental Ethics</h4><span class="tap">Tap to see counters</span></div>
           <div class="ethic-face back">
             <p style="font-size:12.5px; margin:0 0 8px; line-height:1.5;">Environmental protection, sustainability, and resource conservation.</p>
             <div class="lbl">Destroyed by</div>
@@ -594,7 +590,7 @@
       </div>
       <div class="ethic-card" tabindex="0">
         <div class="ethic-card-inner">
-          <div class="ethic-face front cat-management" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/engineering-management.png&#39;) center/cover no-repeat;"><span class="glyph">👥</span><h4>Engineering Management</h4><span class="tap">Tap to see counters</span></div>
+          <div class="ethic-face front cat-management" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url('assets/cards/engineering-management.png') center/cover no-repeat;"><span class="glyph">👥</span><h4>Engineering Management</h4><span class="tap">Tap to see counters</span></div>
           <div class="ethic-face back">
             <p style="font-size:12.5px; margin:0 0 8px; line-height:1.5;">Ethical leadership, project management, and organizational responsibility.</p>
             <div class="lbl">Destroyed by</div>
@@ -662,28 +658,16 @@
       <div class="cc-subhead">🟥 Attack Cards — Business Ethics</div>
       <div class="cc-grid">
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="bribery" style="background-image:url(&#39;assets/cards/bribery.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Bribery</h5>
-            <span class="cc-meta">Targets: Business Ethics</span>
-            <p>An engineer or manager accepts money or favors in exchange for unethical decisions.</p>
-          </div>
+          <div class="cc-art" data-card="bribery" style="background-image:url('assets/cards/bribery.png');"></div>
+          <div class="cc-body"><h5>Bribery</h5><span class="cc-meta">Targets: Business Ethics</span><p>An engineer or manager accepts money or favors in exchange for unethical decisions.</p></div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="safety-cover-up" style="background-image:url(&#39;assets/cards/safety-cover-up.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Safety Cover-up</h5>
-            <span class="cc-meta">Targets: Business Ethics</span>
-            <p>Known workplace hazards are intentionally hidden.</p>
-          </div>
+          <div class="cc-art" data-card="safety-cover-up" style="background-image:url('assets/cards/safety-cover-up.png');"></div>
+          <div class="cc-body"><h5>Safety Cover-up</h5><span class="cc-meta">Targets: Business Ethics</span><p>Known workplace hazards are intentionally hidden.</p></div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="fraudulent-report" style="background-image:url(&#39;assets/cards/fraudulent-report.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Fraudulent Report</h5>
-            <span class="cc-meta">Targets: Business Ethics</span>
-            <p>Engineering reports or inspection results are falsified.</p>
-          </div>
+          <div class="cc-art" data-card="fraudulent-report" style="background-image:url('assets/cards/fraudulent-report.png');"></div>
+          <div class="cc-body"><h5>Fraudulent Report</h5><span class="cc-meta">Targets: Business Ethics</span><p>Engineering reports or inspection results are falsified.</p></div>
         </div>
       </div>
     </div>
@@ -692,28 +676,16 @@
       <div class="cc-subhead">🟥 Attack Cards — Computer Ethics</div>
       <div class="cc-grid">
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="data-breach" style="background-image:url(&#39;assets/cards/data-breach.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Data Breach</h5>
-            <span class="cc-meta">Targets: Computer Ethics</span>
-            <p>Confidential company information is leaked.</p>
-          </div>
+          <div class="cc-art" data-card="data-breach" style="background-image:url('assets/cards/data-breach.png');"></div>
+          <div class="cc-body"><h5>Data Breach</h5><span class="cc-meta">Targets: Computer Ethics</span><p>Confidential company information is leaked.</p></div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="hacking" style="background-image:url(&#39;assets/cards/hacking.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Hacking</h5>
-            <span class="cc-meta">Targets: Computer Ethics</span>
-            <p>Unauthorized access is made to the company systems.</p>
-          </div>
+          <div class="cc-art" data-card="hacking" style="background-image:url('assets/cards/hacking.png');"></div>
+          <div class="cc-body"><h5>Hacking</h5><span class="cc-meta">Targets: Computer Ethics</span><p>Unauthorized access is made to the company systems.</p></div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="ip-theft" style="background-image:url(&#39;assets/cards/ip-theft.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Intellectual Property Theft</h5>
-            <span class="cc-meta">Targets: Computer Ethics</span>
-            <p>Engineering designs, software, or inventions are stolen.</p>
-          </div>
+          <div class="cc-art" data-card="ip-theft" style="background-image:url('assets/cards/ip-theft.png');"></div>
+          <div class="cc-body"><h5>Intellectual Property Theft</h5><span class="cc-meta">Targets: Computer Ethics</span><p>Engineering designs, software, or inventions are stolen.</p></div>
         </div>
       </div>
     </div>
@@ -722,28 +694,16 @@
       <div class="cc-subhead">🟥 Attack Cards — Environmental Ethics</div>
       <div class="cc-grid">
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="pollution" style="background-image:url(&#39;assets/cards/pollution.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Pollution</h5>
-            <span class="cc-meta">Targets: Environmental Ethics</span>
-            <p>The company pollutes the environment.</p>
-          </div>
+          <div class="cc-art" data-card="pollution" style="background-image:url('assets/cards/pollution.png');"></div>
+          <div class="cc-body"><h5>Pollution</h5><span class="cc-meta">Targets: Environmental Ethics</span><p>The company pollutes the environment.</p></div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="illegal-waste-disposal" style="background-image:url(&#39;assets/cards/illegal-waste-disposal.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Illegal Waste Disposal</h5>
-            <span class="cc-meta">Targets: Environmental Ethics</span>
-            <p>Hazardous waste is disposed of improperly.</p>
-          </div>
+          <div class="cc-art" data-card="illegal-waste-disposal" style="background-image:url('assets/cards/illegal-waste-disposal.png');"></div>
+          <div class="cc-body"><h5>Illegal Waste Disposal</h5><span class="cc-meta">Targets: Environmental Ethics</span><p>Hazardous waste is disposed of improperly.</p></div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="environmental-negligence" style="background-image:url(&#39;assets/cards/environmental-negligence.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Environmental Negligence</h5>
-            <span class="cc-meta">Targets: Environmental Ethics</span>
-            <p>Environmental laws and regulations are ignored.</p>
-          </div>
+          <div class="cc-art" data-card="environmental-negligence" style="background-image:url('assets/cards/environmental-negligence.png');"></div>
+          <div class="cc-body"><h5>Environmental Negligence</h5><span class="cc-meta">Targets: Environmental Ethics</span><p>Environmental laws and regulations are ignored.</p></div>
         </div>
       </div>
     </div>
@@ -752,28 +712,16 @@
       <div class="cc-subhead">🟥 Attack Cards — Engineering Management</div>
       <div class="cc-grid">
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="poor-leadership" style="background-image:url(&#39;assets/cards/poor-leadership.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Poor Leadership</h5>
-            <span class="cc-meta">Targets: Engineering Management</span>
-            <p>Leaders make unethical management decisions.</p>
-          </div>
+          <div class="cc-art" data-card="poor-leadership" style="background-image:url('assets/cards/poor-leadership.png');"></div>
+          <div class="cc-body"><h5>Poor Leadership</h5><span class="cc-meta">Targets: Engineering Management</span><p>Leaders make unethical management decisions.</p></div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="conflict-of-interest" style="background-image:url(&#39;assets/cards/conflict-of-interest.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Conflict of Interest</h5>
-            <span class="cc-meta">Targets: Engineering Management</span>
-            <p>Personal interests influence professional judgment.</p>
-          </div>
+          <div class="cc-art" data-card="conflict-of-interest" style="background-image:url('assets/cards/conflict-of-interest.png');"></div>
+          <div class="cc-body"><h5>Conflict of Interest</h5><span class="cc-meta">Targets: Engineering Management</span><p>Personal interests influence professional judgment.</p></div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="mismanagement" style="background-image:url(&#39;assets/cards/mismanagement.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Mismanagement</h5>
-            <span class="cc-meta">Targets: Engineering Management</span>
-            <p>Poor planning or supervision causes project failure.</p>
-          </div>
+          <div class="cc-art" data-card="mismanagement" style="background-image:url('assets/cards/mismanagement.png');"></div>
+          <div class="cc-body"><h5>Mismanagement</h5><span class="cc-meta">Targets: Engineering Management</span><p>Poor planning or supervision causes project failure.</p></div>
         </div>
       </div>
     </div>
@@ -781,265 +729,53 @@
     <div class="cc-group">
       <div class="cc-subhead">🟦 Defense Cards</div>
       <div class="cc-grid">
-        <div class="ccard cc-defense">
-          <div class="cc-art" data-card="firewall" style="background-image:url(&#39;assets/cards/firewall.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Firewall</h5>
-            <span class="cc-meta">Blocks: Data Breach, Hacking</span>
-            <p>Reaction card — play immediately after being targeted by a blocked attack.</p>
-          </div>
-        </div>
-        <div class="ccard cc-defense">
-          <div class="cc-art" data-card="ip-protection" style="background-image:url(&#39;assets/cards/ip-protection.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Intellectual Property Protection</h5>
-            <span class="cc-meta">Blocks: Intellectual Property Theft</span>
-            <p>Reaction card — play immediately after being targeted by a blocked attack.</p>
-          </div>
-        </div>
-        <div class="ccard cc-defense">
-          <div class="cc-art" data-card="environmental-audit" style="background-image:url(&#39;assets/cards/environmental-audit.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Environmental Audit</h5>
-            <span class="cc-meta">Blocks: Pollution, Illegal Waste Disposal, Environmental Negligence</span>
-            <p>Reaction card — play immediately after being targeted by a blocked attack.</p>
-          </div>
-        </div>
-        <div class="ccard cc-defense">
-          <div class="cc-art" data-card="ethics-training" style="background-image:url(&#39;assets/cards/ethics-training.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Ethics Training</h5>
-            <span class="cc-meta">Blocks: Bribery, Fraudulent Report</span>
-            <p>Reaction card — play immediately after being targeted by a blocked attack.</p>
-          </div>
-        </div>
-        <div class="ccard cc-defense">
-          <div class="cc-art" data-card="safety-inspection" style="background-image:url(&#39;assets/cards/safety-inspection.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Safety Inspection</h5>
-            <span class="cc-meta">Blocks: Safety Cover-up</span>
-            <p>Reaction card — play immediately after being targeted by a blocked attack.</p>
-          </div>
-        </div>
-        <div class="ccard cc-defense">
-          <div class="cc-art" data-card="conflict-resolution" style="background-image:url(&#39;assets/cards/conflict-resolution.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Conflict Resolution</h5>
-            <span class="cc-meta">Blocks: Conflict of Interest, Poor Leadership</span>
-            <p>Reaction card — play immediately after being targeted by a blocked attack.</p>
-          </div>
-        </div>
-        <div class="ccard cc-defense">
-          <div class="cc-art" data-card="project-monitoring" style="background-image:url(&#39;assets/cards/project-monitoring.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Project Monitoring</h5>
-            <span class="cc-meta">Blocks: Mismanagement</span>
-            <p>Reaction card — play immediately after being targeted by a blocked attack.</p>
-          </div>
-        </div>
-        <div class="ccard cc-defense">
-          <div class="cc-art" data-card="code-of-ethics" style="background-image:url(&#39;assets/cards/code-of-ethics.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Code of Ethics</h5>
-            <span class="cc-meta">Blocks: Any Attack Card (wild)</span>
-            <p>Wild reaction card — blocks any Attack Card, regardless of which Ethics Card it targets.</p>
-          </div>
-        </div>
+        <div class="ccard cc-defense"><div class="cc-art" data-card="firewall" style="background-image:url('assets/cards/firewall.png');"></div><div class="cc-body"><h5>Firewall</h5><span class="cc-meta">Blocks: Data Breach, Hacking</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
+        <div class="ccard cc-defense"><div class="cc-art" data-card="ip-protection" style="background-image:url('assets/cards/ip-protection.png');"></div><div class="cc-body"><h5>Intellectual Property Protection</h5><span class="cc-meta">Blocks: Intellectual Property Theft</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
+        <div class="ccard cc-defense"><div class="cc-art" data-card="environmental-audit" style="background-image:url('assets/cards/environmental-audit.png');"></div><div class="cc-body"><h5>Environmental Audit</h5><span class="cc-meta">Blocks: Pollution, Illegal Waste Disposal, Environmental Negligence</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
+        <div class="ccard cc-defense"><div class="cc-art" data-card="ethics-training" style="background-image:url('assets/cards/ethics-training.png');"></div><div class="cc-body"><h5>Ethics Training</h5><span class="cc-meta">Blocks: Bribery, Fraudulent Report</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
+        <div class="ccard cc-defense"><div class="cc-art" data-card="safety-inspection" style="background-image:url('assets/cards/safety-inspection.png');"></div><div class="cc-body"><h5>Safety Inspection</h5><span class="cc-meta">Blocks: Safety Cover-up</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
+        <div class="ccard cc-defense"><div class="cc-art" data-card="conflict-resolution" style="background-image:url('assets/cards/conflict-resolution.png');"></div><div class="cc-body"><h5>Conflict Resolution</h5><span class="cc-meta">Blocks: Conflict of Interest, Poor Leadership</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
+        <div class="ccard cc-defense"><div class="cc-art" data-card="project-monitoring" style="background-image:url('assets/cards/project-monitoring.png');"></div><div class="cc-body"><h5>Project Monitoring</h5><span class="cc-meta">Blocks: Mismanagement</span><p>Reaction card — play immediately after being targeted by a blocked attack.</p></div></div>
+        <div class="ccard cc-defense"><div class="cc-art" data-card="code-of-ethics" style="background-image:url('assets/cards/code-of-ethics.png');"></div><div class="cc-body"><h5>Code of Ethics</h5><span class="cc-meta">Blocks: Any Attack Card (wild)</span><p>Wild reaction card — blocks any Attack Card, regardless of which Ethics Card it targets.</p></div></div>
       </div>
     </div>
 
     <div class="cc-group">
       <div class="cc-subhead">🟩 Repair Cards</div>
       <div class="cc-grid">
-        <div class="ccard cc-repair">
-          <div class="cc-art" data-card="security-update" style="background-image:url(&#39;assets/cards/security-update.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Security Update</h5>
-            <span class="cc-meta">Repairs: Computer Ethics</span>
-            <p>Play on your turn to flip your destroyed Computer Ethics card back face-up.</p>
-          </div>
-        </div>
-        <div class="ccard cc-repair">
-          <div class="cc-art" data-card="environmental-cleanup" style="background-image:url(&#39;assets/cards/environmental-cleanup.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Environmental Cleanup</h5>
-            <span class="cc-meta">Repairs: Environmental Ethics</span>
-            <p>Play on your turn to flip your destroyed Environmental Ethics card back face-up.</p>
-          </div>
-        </div>
-        <div class="ccard cc-repair">
-          <div class="cc-art" data-card="ethics-seminar" style="background-image:url(&#39;assets/cards/ethics-seminar.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Ethics Seminar</h5>
-            <span class="cc-meta">Repairs: Business Ethics</span>
-            <p>Play on your turn to flip your destroyed Business Ethics card back face-up.</p>
-          </div>
-        </div>
-        <div class="ccard cc-repair">
-          <div class="cc-art" data-card="leadership-workshop" style="background-image:url(&#39;assets/cards/leadership-workshop.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Leadership Workshop</h5>
-            <span class="cc-meta">Repairs: Engineering Management</span>
-            <p>Play on your turn to flip your destroyed Engineering Management card back face-up.</p>
-          </div>
-        </div>
+        <div class="ccard cc-repair"><div class="cc-art" data-card="security-update" style="background-image:url('assets/cards/security-update.png');"></div><div class="cc-body"><h5>Security Update</h5><span class="cc-meta">Repairs: Computer Ethics</span><p>Play on your turn to flip your destroyed Computer Ethics card back face-up.</p></div></div>
+        <div class="ccard cc-repair"><div class="cc-art" data-card="environmental-cleanup" style="background-image:url('assets/cards/environmental-cleanup.png');"></div><div class="cc-body"><h5>Environmental Cleanup</h5><span class="cc-meta">Repairs: Environmental Ethics</span><p>Play on your turn to flip your destroyed Environmental Ethics card back face-up.</p></div></div>
+        <div class="ccard cc-repair"><div class="cc-art" data-card="ethics-seminar" style="background-image:url('assets/cards/ethics-seminar.png');"></div><div class="cc-body"><h5>Ethics Seminar</h5><span class="cc-meta">Repairs: Business Ethics</span><p>Play on your turn to flip your destroyed Business Ethics card back face-up.</p></div></div>
+        <div class="ccard cc-repair"><div class="cc-art" data-card="leadership-workshop" style="background-image:url('assets/cards/leadership-workshop.png');"></div><div class="cc-body"><h5>Leadership Workshop</h5><span class="cc-meta">Repairs: Engineering Management</span><p>Play on your turn to flip your destroyed Engineering Management card back face-up.</p></div></div>
       </div>
     </div>
 
     <div class="cc-group">
       <div class="cc-subhead">🟨 Special / Event Cards</div>
       <div class="cc-grid">
-        <div class="ccard cc-special">
-          <div class="cc-art" data-card="government-audit" style="background-image:url(&#39;assets/cards/government-audit.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Government Audit</h5>
-            <span class="cc-meta dur">Duration: Immediate</span>
-            <p>Choose one opponent — they discard 2 random cards from their hand. If the Active Ethics Policy modifies this card, follow the policy's effect instead.</p>
-          </div>
-        </div>
-        <div class="ccard cc-special">
-          <div class="cc-art" data-card="iso-certification" style="background-image:url(&#39;assets/cards/iso-certification.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>ISO Certification</h5>
-            <span class="cc-meta dur">Duration: Immediate</span>
-            <p>Repair any one of your destroyed Ethics Cards by flipping it face-up — any type, regardless of category.</p>
-          </div>
-        </div>
-        <div class="ccard cc-special">
-          <div class="cc-art" data-card="whistleblower" style="background-image:url(&#39;assets/cards/whistleblower.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Whistleblower</h5>
-            <span class="cc-meta dur">Duration: Immediate</span>
-            <p>Look at one opponent's hand, choose one card, and add it to your own. If the Active Ethics Policy modifies this card, follow the policy's effect instead.</p>
-          </div>
-        </div>
-        <div class="ccard cc-special">
-          <div class="cc-art" data-card="public-complaint" style="background-image:url(&#39;assets/cards/public-complaint.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Public Complaint</h5>
-            <span class="cc-meta dur">Duration: One full turn</span>
-            <p>Choose one opponent — they cannot play Attack Cards on their next turn. They may still draw, play Repair or Special/Event cards, and use Defense cards if attacked.</p>
-          </div>
-        </div>
-        <div class="ccard cc-special">
-          <div class="cc-art" data-card="budget-increase" style="background-image:url(&#39;assets/cards/budget-increase.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Budget Increase</h5>
-            <span class="cc-meta dur">Duration: Immediate</span>
-            <p>Draw 2 additional cards from the Main Deck immediately, added to your hand.</p>
-          </div>
-        </div>
-        <div class="ccard cc-special">
-          <div class="cc-art" data-card="emergency-meeting" style="background-image:url(&#39;assets/cards/emergency-meeting.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Emergency Meeting</h5>
-            <span class="cc-meta dur">Duration: Immediate</span>
-            <p>Every player discards their entire hand, then immediately draws 5 new cards. Ethics Cards, the Active Ethics Policy, and the Draw/Discard Piles are unaffected (except for the discarded hands).</p>
-          </div>
-        </div>
-        <div class="ccard cc-special">
-          <div class="cc-art" data-card="multinational-expansion" style="background-image:url(&#39;assets/cards/multinational-expansion.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Multinational Expansion</h5>
-            <span class="cc-meta dur">Duration: Immediate</span>
-            <p>Draw 2 cards, then choose one: repair 1 Ethics Card, or play 1 additional Attack Card this turn.</p>
-          </div>
-        </div>
-        <div class="ccard cc-special">
-          <div class="cc-art" data-card="revised-code-of-ethics" style="background-image:url(&#39;assets/cards/revised-code-of-ethics.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Revised Code of Ethics</h5>
-            <span class="cc-meta dur">Duration: Immediate (new policy stays active until replaced)</span>
-            <p>Discard the current Active Ethics Policy, then reveal the top card of the Ethics Policy Deck — it immediately becomes the new Active Ethics Policy. If the Policy Deck runs out, reshuffle the discarded policies into a new deck.</p>
-          </div>
-        </div>
+        <div class="ccard cc-special"><div class="cc-art" data-card="government-audit" style="background-image:url('assets/cards/government-audit.png');"></div><div class="cc-body"><h5>Government Audit</h5><span class="cc-meta dur">Duration: Immediate</span><p>Choose one opponent — they discard 2 random cards from their hand. If the Active Ethics Policy modifies this card, follow the policy's effect instead.</p></div></div>
+        <div class="ccard cc-special"><div class="cc-art" data-card="iso-certification" style="background-image:url('assets/cards/iso-certification.png');"></div><div class="cc-body"><h5>ISO Certification</h5><span class="cc-meta dur">Duration: Immediate</span><p>Repair any one of your destroyed Ethics Cards by flipping it face-up — any type, regardless of category.</p></div></div>
+        <div class="ccard cc-special"><div class="cc-art" data-card="whistleblower" style="background-image:url('assets/cards/whistleblower.png');"></div><div class="cc-body"><h5>Whistleblower</h5><span class="cc-meta dur">Duration: Immediate</span><p>Look at one opponent's hand, choose one card, and add it to your own. If the Active Ethics Policy modifies this card, follow the policy's effect instead.</p></div></div>
+        <div class="ccard cc-special"><div class="cc-art" data-card="public-complaint" style="background-image:url('assets/cards/public-complaint.png');"></div><div class="cc-body"><h5>Public Complaint</h5><span class="cc-meta dur">Duration: One full turn</span><p>Choose one opponent — they cannot play Attack Cards on their next turn. They may still draw, play Repair or Special/Event cards, and use Defense cards if attacked.</p></div></div>
+        <div class="ccard cc-special"><div class="cc-art" data-card="budget-increase" style="background-image:url('assets/cards/budget-increase.png');"></div><div class="cc-body"><h5>Budget Increase</h5><span class="cc-meta dur">Duration: Immediate</span><p>Draw 2 additional cards from the Main Deck immediately, added to your hand.</p></div></div>
+        <div class="ccard cc-special"><div class="cc-art" data-card="emergency-meeting" style="background-image:url('assets/cards/emergency-meeting.png');"></div><div class="cc-body"><h5>Emergency Meeting</h5><span class="cc-meta dur">Duration: Immediate</span><p>Every player discards their entire hand, then immediately draws 5 new cards. Ethics Cards, the Active Ethics Policy, and the Draw/Discard Piles are unaffected (except for the discarded hands).</p></div></div>
+        <div class="ccard cc-special"><div class="cc-art" data-card="revised-code-of-ethics" style="background-image:url('assets/cards/revised-code-of-ethics.png');"></div><div class="cc-body"><h5>Revised Code of Ethics</h5><span class="cc-meta dur">Duration: Immediate (new policy stays active until replaced)</span><p>Discard the current Active Ethics Policy, then reveal the top card of the Ethics Policy Deck — it immediately becomes the new Active Ethics Policy. If the Policy Deck runs out, reshuffle the discarded policies into a new deck.</p></div></div>
       </div>
-      <p class="cc-note" style="margin-top:16px;">Heads up — this list includes <strong>Multinational Expansion</strong>, which brings Special/Event Cards to 8 unique designs. The Card Types overview above (and the component tally) still shows 7 unique / 18 cards — let me know the intended print quantity for Multinational Expansion and I'll update those counts to match.</p>
     </div>
 
     <div class="cc-group">
       <div class="cc-subhead">🟪 Ethics Policy Cards</div>
       <div class="cc-grid">
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-harm" style="background-image:url(&#39;assets/cards/policy-harm.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Do Not Use a Computer to Harm Other People</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>A player cannot target the same opponent with an Attack Card on two consecutive turns. If they try, the Attack Card is discarded without effect and their turn ends immediately.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-interfere" style="background-image:url(&#39;assets/cards/policy-interfere.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Do Not Interfere with Other People's Work</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>A player may not attack the same opponent on consecutive turns — they must target someone else first. Violating attacks fail and are discarded.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-snoop" style="background-image:url(&#39;assets/cards/policy-snoop.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Do Not Snoop Around in Other People's Files</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>Whistleblower may only look at an opponent's hand — it cannot steal a card. Government Audit lets the player look at the opponent's hand and shuffle one chosen card back into the Main Deck, instead of discarding two random cards.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-steal" style="background-image:url(&#39;assets/cards/policy-steal.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Do Not Use a Computer to Steal</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>Whistleblower and Intellectual Property Theft cannot be played — either card is immediately discarded without effect if attempted.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-false-witness" style="background-image:url(&#39;assets/cards/policy-false-witness.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Do Not Bear False Witness</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>Fraudulent Report no longer destroys Business Ethics. Instead, the targeted player skips their Draw Phase on their next turn.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-copy-software" style="background-image:url(&#39;assets/cards/policy-copy-software.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Do Not Copy Software You Did Not Pay For</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>Data Breach and Hacking become temporary — instead of destroying Computer Ethics, the card is turned sideways and automatically returns face-up at the start of the owner's next turn.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-intellectual-output" style="background-image:url(&#39;assets/cards/policy-intellectual-output.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Do Not Use Other People's Intellectual Output</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>If Intellectual Property Theft is blocked by a Defense Card, the attacking player must discard 2 additional cards from their hand.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-social-consequences" style="background-image:url(&#39;assets/cards/policy-social-consequences.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Think About the Social Consequences of the Program You Are Writing</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>Whenever a player successfully destroys an opponent's Ethics Card, they must immediately discard 1 random card from their own hand.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-public-good" style="background-image:url(&#39;assets/cards/policy-public-good.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Always Consider the Public Good</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>At the start of their turn, each player chooses one: draw 1 card, or repair 1 destroyed Ethics Card for free — not both.</p>
-          </div>
-        </div>
-        <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-consideration-respect" style="background-image:url(&#39;assets/cards/policy-consideration-respect.png&#39;);"></div>
-          <div class="cc-body">
-            <h5>Use Computers with Consideration and Respect</h5>
-            <span class="cc-meta dur">Duration: Until replaced</span>
-            <p>Before an Attack Card resolves, the targeted player may discard 1 card from their hand. If they do, the attacker must choose a different opponent or end their turn without attacking.</p>
-          </div>
-        </div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-harm" style="background-image:url('assets/cards/policy-harm.png');"></div><div class="cc-body"><h5>Do Not Use a Computer to Harm Other People</h5><span class="cc-meta dur">Duration: Until replaced</span><p>A player cannot target the same opponent with an Attack Card on two consecutive turns. If they try, the Attack Card is discarded without effect and their turn ends immediately.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-interfere" style="background-image:url('assets/cards/policy-interfere.png');"></div><div class="cc-body"><h5>Do Not Interfere with Other People's Work</h5><span class="cc-meta dur">Duration: Until replaced</span><p>A player may not attack the same opponent on consecutive turns — they must target someone else first. Violating attacks fail and are discarded.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-snoop" style="background-image:url('assets/cards/policy-snoop.png');"></div><div class="cc-body"><h5>Do Not Snoop Around in Other People's Files</h5><span class="cc-meta dur">Duration: Until replaced</span><p>Whistleblower may only look at an opponent's hand — it cannot steal a card. Government Audit lets the player look at the opponent's hand and shuffle one chosen card back into the Main Deck, instead of discarding two random cards.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-steal" style="background-image:url('assets/cards/policy-steal.png');"></div><div class="cc-body"><h5>Do Not Use a Computer to Steal</h5><span class="cc-meta dur">Duration: Until replaced</span><p>Whistleblower and Intellectual Property Theft cannot be played — either card is immediately discarded without effect if attempted.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-false-witness" style="background-image:url('assets/cards/policy-false-witness.png');"></div><div class="cc-body"><h5>Do Not Bear False Witness</h5><span class="cc-meta dur">Duration: Until replaced</span><p>Fraudulent Report no longer destroys Business Ethics. Instead, the targeted player skips their Draw Phase on their next turn.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-copy-software" style="background-image:url('assets/cards/policy-copy-software.png');"></div><div class="cc-body"><h5>Do Not Copy Software You Did Not Pay For</h5><span class="cc-meta dur">Duration: Until replaced</span><p>Data Breach and Hacking become temporary — instead of destroying Computer Ethics, the card is turned sideways and automatically returns face-up at the start of the owner's next turn.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-intellectual-output" style="background-image:url('assets/cards/policy-intellectual-output.png');"></div><div class="cc-body"><h5>Do Not Use Other People's Intellectual Output</h5><span class="cc-meta dur">Duration: Until replaced</span><p>If Intellectual Property Theft is blocked by a Defense Card, the attacking player must discard 2 additional cards from their hand.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-social-consequences" style="background-image:url('assets/cards/policy-social-consequences.png');"></div><div class="cc-body"><h5>Think About the Social Consequences of the Program You Are Writing</h5><span class="cc-meta dur">Duration: Until replaced</span><p>Whenever a player successfully destroys an opponent's Ethics Card, they must immediately discard 1 random card from their own hand.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-public-good" style="background-image:url('assets/cards/policy-public-good.png');"></div><div class="cc-body"><h5>Always Consider the Public Good</h5><span class="cc-meta dur">Duration: Until replaced</span><p>At the start of their turn, each player chooses one: draw 1 card, or repair 1 destroyed Ethics Card for free — not both.</p></div></div>
+        <div class="ccard cc-policy"><div class="cc-art" data-card="policy-consideration-respect" style="background-image:url('assets/cards/policy-consideration-respect.png');"></div><div class="cc-body"><h5>Use Computers with Consideration and Respect</h5><span class="cc-meta dur">Duration: Until replaced</span><p>Before an Attack Card resolves, the targeted player may discard 1 card from their hand. If they do, the attacker must choose a different opponent or end their turn without attacking.</p></div></div>
       </div>
     </div>
   </div>
@@ -1109,53 +845,89 @@
 <section id="jokers">
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">🃏</span><h2>The Jokers</h2><span class="sec-sub">The team behind Ethics Under Attack</span></div>
-    <p class="jokers-intro">Every deck needs its wild cards. Meet the team who designed, wrote, and built Ethics Under Attack.</p>
-   <div class="jokers-grid" id="jokersGrid">
-  <!-- Joker cards will be generated by JavaScript -->
-</div>
+    <p class="jokers-intro">Every deck needs its wild cards. Meet the team who designed, wrote, and built Ethics Under Attack. Hover any card — it flips a random <em>other</em> teammate into view.</p>
+    <div class="jokers-grid" id="jokersGrid">
+      <!-- Joker cards generated by JavaScript -->
+    </div>
+  </div>
+</section>
+
+<section id="share">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">15</span><h2>Share This Rulebook</h2></div>
+    <div class="share-box">
+      <div class="qr-target" id="qrcode"></div>
+      <div class="share-text">
+        <h3>Scan to open on any device</h3>
+        <p>Share this page with your players so everyone can look up a rule mid-game.</p>
+        <div class="url-row">
+          <input type="text" id="urlInput" placeholder="Page URL">
+          <button onclick="makeQR()">Generate</button>
+        </div>
+        <p class="share-note">The QR code updates instantly for the URL entered above.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <p>ETHICS UNDER ATTACK — OFFICIAL RULEBOOK · A 4-PLAYER GAME ON ENGINEERING ETHICS</p>
 </footer>
 
 <script>
-  let qr = null;
-  function makeQR(){
-    const el = document.getElementById('qrcode');
-    const url = document.getElementById('urlInput').value.trim() || window.location.href;
-    el.innerHTML = '';
-    qr = new QRCode(el, {
-      text: url,
-      width: 160,
-      height: 160,
-      colorDark: '#1c1508',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.M
-    });
-  }
-  window.addEventListener('load', () => {
-    document.getElementById('urlInput').value = window.location.href.startsWith('http') ? window.location.href : '';
-    makeQR();
+let qr = null;
+function makeQR(){
+  const el = document.getElementById('qrcode');
+  const url = document.getElementById('urlInput').value.trim() || window.location.href;
+  el.innerHTML = '';
+  qr = new QRCode(el, {
+    text: url,
+    width: 160,
+    height: 160,
+    colorDark: '#1c1508',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
   });
+}
+window.addEventListener('load', () => {
+  document.getElementById('urlInput').value = window.location.href.startsWith('http') ? window.location.href : '';
+  makeQR();
+});
 </script>
+
 <script>
+/* ---------- The Jokers: hover reveals a random OTHER hidden card ---------- */
 const creators = [
-  { name: "Yancy Aclan", role: "Co-Creator", image: "assets/creators/aclan-yancy.png" },
-  { name: "Carl Axle Buno", role: "Co-Creator", image: "assets/creators/buno-carl-axle.png" },
-  { name: "Ariza Borja", role: "Co-Creator", image: "assets/creators/borja-ariza.png" },
-  { name: "Heart Soriano", role: "Co-Creator", image: "assets/creators/soriano-heart.png" },
-  { name: "Matt Amiel Manalang", role: "Co-Creator", image: "assets/creators/manalang-matt-amiel.png" },
-  { name: "Nice", role: "Co-Creator", image: "assets/creators/nice.png" },
-  { name: "Member 7", role: "Co-Creator", image: "assets/creators/member7.png" },
-  { name: "Member 8", role: "Co-Creator", image: "assets/creators/member8.png" }
+  { name: "Yancy Aclan",        role: "Co-Creator", image: "assets/creators/aclan-yancy.png" },
+  { name: "Carl Axle Buno",     role: "Co-Creator", image: "assets/creators/buno-carl-axle.png" },
+  { name: "Ariza Borja",        role: "Co-Creator", image: "assets/creators/borja-ariza.png" },
+  { name: "Heart Soriano",      role: "Co-Creator", image: "assets/creators/soriano-heart.png" },
+  { name: "Matt Amiel Manalang",role: "Co-Creator", image: "assets/creators/manalang-matt-amiel.png" },
+  { name: "Mark Luke Bool",               role: "Co-Creator", image: "assets/creators/nice.png" },
+  { name: "John Princelee Untalan",           role: "Co-Creator", image: "assets/creators/member7.png" }
 ];
 
 const remaining = [...creators];
 const grid = document.getElementById('jokersGrid');
+const allCards = [];
 
 function randomRemaining() {
   const index = Math.floor(Math.random() * remaining.length);
   return remaining.splice(index, 1)[0];
+}
+
+function revealCard(card) {
+  if (card.classList.contains('revealed')) return false;
+  if (remaining.length === 0) return false;
+
+  const creator = randomRemaining();
+
+  card.querySelector('.joker-photo').style.backgroundImage = `url('${creator.image}')`;
+  card.querySelector('.name').textContent = creator.name;
+  card.querySelector('.surname').textContent = creator.role;
+
+  card.classList.add('revealed');
+  return true;
 }
 
 for (let i = 0; i < creators.length; i++) {
@@ -1177,23 +949,22 @@ for (let i = 0; i < creators.length; i++) {
   `;
 
   card.addEventListener('mouseenter', () => {
+    // Hovering a card reveals a random OTHER unrevealed card, never itself.
+    const others = allCards.filter(c => c !== card && !c.classList.contains('revealed'));
 
-    if (card.classList.contains('revealed')) return;
-    if (remaining.length === 0) return;
-
-    const creator = randomRemaining();
-
-    card.querySelector('.joker-photo').style.backgroundImage =
-      `url('${creator.image}')`;
-
-    card.querySelector('.name').textContent = creator.name;
-    card.querySelector('.surname').textContent = creator.role;
-
-    card.classList.add('revealed');
+    if (others.length > 0) {
+      const target = others[Math.floor(Math.random() * others.length)];
+      revealCard(target);
+    } else if (!card.classList.contains('revealed')) {
+      // Last unrevealed card left (and it's the one being hovered) — reveal it.
+      revealCard(card);
+    }
   });
 
+  allCards.push(card);
   grid.appendChild(card);
 }
 </script>
+
 </body>
 </html>

@@ -332,11 +332,39 @@
   @media(max-width:640px){.jokers-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:400px){.jokers-grid{grid-template-columns:1fr;}}
   .joker-card{
-    background:var(--paper); border-radius:10px; overflow:hidden;
-    box-shadow:0 14px 28px rgba(0,0,0,.4);
-    position:relative; transition:transform .25s ease;
+    aspect-ratio:5/7; perspective:1400px; cursor:pointer;
   }
-  .joker-card:hover{transform:translateY(-4px);}
+  .joker-card-inner{
+    position:relative; width:100%; height:100%;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+    transform-style:preserve-3d;
+  }
+  .joker-card:hover .joker-card-inner,
+  .joker-card:focus-within .joker-card-inner,
+  .joker-card.revealed .joker-card-inner{
+    transform:rotateY(180deg);
+  }
+  .joker-face{
+    position:absolute; inset:0; backface-visibility:hidden;
+    border-radius:10px; overflow:hidden;
+    box-shadow:0 14px 28px rgba(0,0,0,.4);
+  }
+  .joker-face.j-front{
+    background:linear-gradient(155deg,#1c2a44,#0d1522);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    border:2px solid var(--gold-dim,#8a7327);
+  }
+  .joker-face.j-front .j-glyph{
+    font-size:54px; filter:drop-shadow(0 4px 10px rgba(0,0,0,.5));
+    transform:rotate(-8deg);
+  }
+  .joker-face.j-front .j-hint{
+    margin-top:10px; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em;
+    text-transform:uppercase; color:#8fa1bd;
+  }
+  .joker-face.j-back{
+    background:var(--paper); transform:rotateY(180deg);
+  }
   .joker-pip{
     position:absolute; top:8px; left:10px; z-index:2;
     font-family:var(--display); font-size:15px; color:var(--gold);
@@ -344,14 +372,16 @@
   }
   .joker-pip.br{ top:auto; left:auto; bottom:8px; right:10px; transform:rotate(180deg); }
   .joker-photo{
-    aspect-ratio:5/7; background-size:cover; background-position:center;
-    position:relative;
+    position:absolute; inset:0; background-size:cover; background-position:center;
   }
   .joker-photo::after{
     content:''; position:absolute; inset:0;
     background:linear-gradient(to top, rgba(10,10,10,.75) 0%, rgba(10,10,10,0) 45%);
   }
-  .joker-body{ padding:10px 12px 14px; text-align:center; }
+  .joker-body{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    padding:10px 12px 14px; text-align:center; background:var(--paper);
+  }
   .joker-body .name{
     font-family:var(--display); font-size:15.5px; color:var(--ink);
     letter-spacing:.01em; margin:0;
@@ -1061,67 +1091,123 @@
     <div class="sec-head"><span class="sec-num">🃏</span><h2>The Jokers</h2><span class="sec-sub">The team behind Ethics Under Attack</span></div>
     <p class="jokers-intro">Every deck needs its wild cards. Meet the team who designed, wrote, and built Ethics Under Attack.</p>
     <div class="jokers-grid">
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/aclan-yancy.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Yancy Aclan</p>
-          <p class="surname">Co-Creator</p>
+      <div class="joker-card" tabindex="0">
+        <div class="joker-card-inner">
+          <div class="joker-face j-front">
+            <span class="j-glyph">🃏</span>
+            <span class="j-hint">Hover to reveal</span>
+          </div>
+          <div class="joker-face j-back">
+            <span class="joker-pip">🃏</span>
+            <div class="joker-photo" style="background-image:url('assets/creators/aclan-yancy.png');"></div>
+            <span class="joker-pip br">🃏</span>
+            <div class="joker-body">
+              <p class="name">Yancy Aclan</p>
+              <p class="surname">Co-Creator</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/buno-carl-axle.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Carl Axle Buno</p>
-          <p class="surname">Co-Creator</p>
+      <div class="joker-card" tabindex="0">
+        <div class="joker-card-inner">
+          <div class="joker-face j-front">
+            <span class="j-glyph">🃏</span>
+            <span class="j-hint">Hover to reveal</span>
+          </div>
+          <div class="joker-face j-back">
+            <span class="joker-pip">🃏</span>
+            <div class="joker-photo" style="background-image:url('assets/creators/buno-carl-axle.png');"></div>
+            <span class="joker-pip br">🃏</span>
+            <div class="joker-body">
+              <p class="name">Carl Axle Buno</p>
+              <p class="surname">Co-Creator</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/borja-ariza.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Ariza Borja</p>
-          <p class="surname">Co-Creator</p>
+      <div class="joker-card" tabindex="0">
+        <div class="joker-card-inner">
+          <div class="joker-face j-front">
+            <span class="j-glyph">🃏</span>
+            <span class="j-hint">Hover to reveal</span>
+          </div>
+          <div class="joker-face j-back">
+            <span class="joker-pip">🃏</span>
+            <div class="joker-photo" style="background-image:url('assets/creators/borja-ariza.png');"></div>
+            <span class="joker-pip br">🃏</span>
+            <div class="joker-body">
+              <p class="name">Ariza Borja</p>
+              <p class="surname">Co-Creator</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/soriano-heart.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Heart Soriano</p>
-          <p class="surname">Co-Creator</p>
+      <div class="joker-card" tabindex="0">
+        <div class="joker-card-inner">
+          <div class="joker-face j-front">
+            <span class="j-glyph">🃏</span>
+            <span class="j-hint">Hover to reveal</span>
+          </div>
+          <div class="joker-face j-back">
+            <span class="joker-pip">🃏</span>
+            <div class="joker-photo" style="background-image:url('assets/creators/soriano-heart.png');"></div>
+            <span class="joker-pip br">🃏</span>
+            <div class="joker-body">
+              <p class="name">Heart Soriano</p>
+              <p class="surname">Co-Creator</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/manalang-matt-amiel.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Matt Amiel Manalang</p>
-          <p class="surname">Co-Creator</p>
+      <div class="joker-card" tabindex="0">
+        <div class="joker-card-inner">
+          <div class="joker-face j-front">
+            <span class="j-glyph">🃏</span>
+            <span class="j-hint">Hover to reveal</span>
+          </div>
+          <div class="joker-face j-back">
+            <span class="joker-pip">🃏</span>
+            <div class="joker-photo" style="background-image:url('assets/creators/manalang-matt-amiel.png');"></div>
+            <span class="joker-pip br">🃏</span>
+            <div class="joker-body">
+              <p class="name">Matt Amiel Manalang</p>
+              <p class="surname">Co-Creator</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/bool-mark-luke.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">Mark Luke Bool</p>
-          <p class="surname">Co-Creator</p>
+      <div class="joker-card" tabindex="0">
+        <div class="joker-card-inner">
+          <div class="joker-face j-front">
+            <span class="j-glyph">🃏</span>
+            <span class="j-hint">Hover to reveal</span>
+          </div>
+          <div class="joker-face j-back">
+            <span class="joker-pip">🃏</span>
+            <div class="joker-photo" style="background-image:url('assets/creators/bool-mark-luke.png');"></div>
+            <span class="joker-pip br">🃏</span>
+            <div class="joker-body">
+              <p class="name">Mark Luke Bool</p>
+              <p class="surname">Co-Creator</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="joker-card">
-        <span class="joker-pip">🃏</span>
-        <div class="joker-photo" style="background-image:url('assets/creators/untalan-john-princelee.png');"></div>
-        <span class="joker-pip br">🃏</span>
-        <div class="joker-body">
-          <p class="name">John Princelee Untalan</p>
-          <p class="surname">Co-Creator</p>
+      <div class="joker-card" tabindex="0">
+        <div class="joker-card-inner">
+          <div class="joker-face j-front">
+            <span class="j-glyph">🃏</span>
+            <span class="j-hint">Hover to reveal</span>
+          </div>
+          <div class="joker-face j-back">
+            <span class="joker-pip">🃏</span>
+            <div class="joker-photo" style="background-image:url('assets/creators/untalan-john-princelee.png?v=2');"></div>
+            <span class="joker-pip br">🃏</span>
+            <div class="joker-body">
+              <p class="name">John Princelee Untalan</p>
+              <p class="surname">Co-Creator</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1168,6 +1254,14 @@
   window.addEventListener('load', () => {
     document.getElementById('urlInput').value = window.location.href.startsWith('http') ? window.location.href : '';
     makeQR();
+  });
+
+  // Joker cards: reveal on first hover/tap/focus, then stay revealed permanently
+  document.querySelectorAll('.joker-card').forEach(card => {
+    const reveal = () => card.classList.add('revealed');
+    card.addEventListener('mouseenter', reveal);
+    card.addEventListener('focus', reveal);
+    card.addEventListener('touchstart', reveal, { passive: true });
   });
 </script>
 

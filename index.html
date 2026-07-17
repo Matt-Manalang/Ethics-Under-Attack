@@ -560,13 +560,13 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
 </nav>
 
 <div class="search-bar-wrap">
-  <div class="wrap search-bar-inner">
+  <form class="wrap search-bar-inner" id="searchForm" onsubmit="return false;">
     <span class="search-icon">🔍</span>
-    <input type="text" id="siteSearch" placeholder="Search cards, policies, FAQ…" autocomplete="off">
+    <input type="text" id="siteSearch" placeholder="Search cards, policies, FAQ…" autocomplete="off" enterkeyhint="search">
     <span class="search-count" id="searchCount"></span>
     <span class="search-hint" id="searchHint">press ↵ to jump</span>
     <button class="search-clear" id="searchClear" style="display:none;" type="button">✕ Clear</button>
-  </div>
+  </form>
   <p class="wrap search-no-results" id="searchNoResults">No matching cards or FAQ entries. Try a different term.</p>
 </div>
 
@@ -1362,13 +1362,15 @@ card.addEventListener("click", () => revealCard(card));   // mobile support
   }
 
   input.addEventListener('input', runSearch);
-  input.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter'){
-      e.preventDefault();
-      runSearch();
-      jumpToFirstMatch();
-    }
+
+  const form = document.getElementById('searchForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    runSearch();
+    jumpToFirstMatch();
+    input.blur();
   });
+
   clearBtn.addEventListener('click', () => {
     input.value = '';
     runSearch();

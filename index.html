@@ -320,6 +320,47 @@
     max-width:78ch; margin:0 0 30px;
   }
 
+  /* ---------- the jokers (creators) ---------- */
+  .jokers-intro{
+    font-family:var(--mono); font-size:13px; color:#8fa1bd; line-height:1.7;
+    max-width:70ch; margin:0 0 32px;
+  }
+  .jokers-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  }
+  @media(max-width:900px){.jokers-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:640px){.jokers-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:400px){.jokers-grid{grid-template-columns:1fr;}}
+  .joker-card{
+    background:var(--paper); border-radius:10px; overflow:hidden;
+    box-shadow:0 14px 28px rgba(0,0,0,.4);
+    position:relative; transition:transform .25s ease;
+  }
+  .joker-card:hover{transform:translateY(-4px);}
+  .joker-pip{
+    position:absolute; top:8px; left:10px; z-index:2;
+    font-family:var(--display); font-size:15px; color:var(--gold);
+    text-shadow:0 1px 3px rgba(0,0,0,.6);
+  }
+  .joker-pip.br{ top:auto; left:auto; bottom:8px; right:10px; transform:rotate(180deg); }
+  .joker-photo{
+    aspect-ratio:5/7; background-size:cover; background-position:center;
+    position:relative;
+  }
+  .joker-photo::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(10,10,10,.75) 0%, rgba(10,10,10,0) 45%);
+  }
+  .joker-body{ padding:10px 12px 14px; text-align:center; }
+  .joker-body .name{
+    font-family:var(--display); font-size:15.5px; color:var(--ink);
+    letter-spacing:.01em; margin:0;
+  }
+  .joker-body .surname{
+    font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--red-dim); margin:2px 0 0;
+  }
+
   /* ---------- reference table ---------- */
   table.inv{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:13.5px;}
   table.inv th, table.inv td{text-align:left; padding:10px 8px; border-bottom:1px solid #cbbe97;}
@@ -380,6 +421,7 @@
       <a href="#policy">Policy Deck</a>
       <a href="#winning">Winning</a>
       <a href="#quickref">Quick Ref</a>
+      <a href="#jokers">The Jokers</a>
       <a href="#share">Get QR</a>
     </div>
   </div>
@@ -466,7 +508,7 @@
     <div class="grid-4">
       <div class="ethic-card" tabindex="0">
         <div class="ethic-card-inner">
-          <div class="ethic-face front cat-business" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/business-ethics.png&#39;) center/cover no-repeat;"><span class="glyph">💼</span><h4>Business Ethics</h4><span class="tap">Tap to see counters</span></div>
+          <div class="ethic-face front cat-business" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/business-ethics-thumb.png&#39;) center/cover no-repeat;"><span class="glyph">💼</span><h4>Business Ethics</h4><span class="tap">Tap to see counters</span></div>
           <div class="ethic-face back">
             <p style="font-size:12.5px; margin:0 0 8px; line-height:1.5;">Honesty, integrity, fairness, and responsible business practices.</p>
             <div class="lbl">Destroyed by</div>
@@ -478,7 +520,7 @@
       </div>
       <div class="ethic-card" tabindex="0">
         <div class="ethic-card-inner">
-          <div class="ethic-face front cat-computer" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/computer-ethics.png&#39;) center/cover no-repeat;"><span class="glyph">💻</span><h4>Computer Ethics</h4><span class="tap">Tap to see counters</span></div>
+          <div class="ethic-face front cat-computer" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/computer-ethics-thumb.png&#39;) center/cover no-repeat;"><span class="glyph">💻</span><h4>Computer Ethics</h4><span class="tap">Tap to see counters</span></div>
           <div class="ethic-face back">
             <p style="font-size:12.5px; margin:0 0 8px; line-height:1.5;">Cybersecurity, privacy, intellectual property, and ethical computing.</p>
             <div class="lbl">Destroyed by</div>
@@ -490,7 +532,7 @@
       </div>
       <div class="ethic-card" tabindex="0">
         <div class="ethic-card-inner">
-          <div class="ethic-face front cat-environmental" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/environmental-ethics.png&#39;) center/cover no-repeat;"><span class="glyph">🌿</span><h4>Environmental Ethics</h4><span class="tap">Tap to see counters</span></div>
+          <div class="ethic-face front cat-environmental" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/environmental-ethics-thumb.png&#39;) center/cover no-repeat;"><span class="glyph">🌿</span><h4>Environmental Ethics</h4><span class="tap">Tap to see counters</span></div>
           <div class="ethic-face back">
             <p style="font-size:12.5px; margin:0 0 8px; line-height:1.5;">Environmental protection, sustainability, and resource conservation.</p>
             <div class="lbl">Destroyed by</div>
@@ -502,7 +544,7 @@
       </div>
       <div class="ethic-card" tabindex="0">
         <div class="ethic-card-inner">
-          <div class="ethic-face front cat-management" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/engineering-management.png&#39;) center/cover no-repeat;"><span class="glyph">👥</span><h4>Engineering Management</h4><span class="tap">Tap to see counters</span></div>
+          <div class="ethic-face front cat-management" style="background:linear-gradient(rgba(10,15,25,.38),rgba(10,15,25,.6)),url(&#39;assets/cards/engineering-management-thumb.png&#39;) center/cover no-repeat;"><span class="glyph">👥</span><h4>Engineering Management</h4><span class="tap">Tap to see counters</span></div>
           <div class="ethic-face back">
             <p style="font-size:12.5px; margin:0 0 8px; line-height:1.5;">Ethical leadership, project management, and organizational responsibility.</p>
             <div class="lbl">Destroyed by</div>
@@ -570,7 +612,7 @@
       <div class="cc-subhead">🟥 Attack Cards — Business Ethics</div>
       <div class="cc-grid">
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="bribery" style="background-image:url(&#39;assets/cards/bribery.png&#39;);"></div>
+          <div class="cc-art" data-card="bribery" style="background-image:url(&#39;assets/cards/bribery-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Bribery</h5>
             <span class="cc-meta">Targets: Business Ethics</span>
@@ -578,7 +620,7 @@
           </div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="safety-cover-up" style="background-image:url(&#39;assets/cards/safety-cover-up.png&#39;);"></div>
+          <div class="cc-art" data-card="safety-cover-up" style="background-image:url(&#39;assets/cards/safety-cover-up-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Safety Cover-up</h5>
             <span class="cc-meta">Targets: Business Ethics</span>
@@ -586,7 +628,7 @@
           </div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="fraudulent-report" style="background-image:url(&#39;assets/cards/fraudulent-report.png&#39;);"></div>
+          <div class="cc-art" data-card="fraudulent-report" style="background-image:url(&#39;assets/cards/fraudulent-report-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Fraudulent Report</h5>
             <span class="cc-meta">Targets: Business Ethics</span>
@@ -600,7 +642,7 @@
       <div class="cc-subhead">🟥 Attack Cards — Computer Ethics</div>
       <div class="cc-grid">
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="data-breach" style="background-image:url(&#39;assets/cards/data-breach.png&#39;);"></div>
+          <div class="cc-art" data-card="data-breach" style="background-image:url(&#39;assets/cards/data-breach-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Data Breach</h5>
             <span class="cc-meta">Targets: Computer Ethics</span>
@@ -608,7 +650,7 @@
           </div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="hacking" style="background-image:url(&#39;assets/cards/hacking.png&#39;);"></div>
+          <div class="cc-art" data-card="hacking" style="background-image:url(&#39;assets/cards/hacking-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Hacking</h5>
             <span class="cc-meta">Targets: Computer Ethics</span>
@@ -616,7 +658,7 @@
           </div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="ip-theft" style="background-image:url(&#39;assets/cards/ip-theft.png&#39;);"></div>
+          <div class="cc-art" data-card="ip-theft" style="background-image:url(&#39;assets/cards/ip-theft-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Intellectual Property Theft</h5>
             <span class="cc-meta">Targets: Computer Ethics</span>
@@ -630,7 +672,7 @@
       <div class="cc-subhead">🟥 Attack Cards — Environmental Ethics</div>
       <div class="cc-grid">
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="pollution" style="background-image:url(&#39;assets/cards/pollution.png&#39;);"></div>
+          <div class="cc-art" data-card="pollution" style="background-image:url(&#39;assets/cards/pollution-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Pollution</h5>
             <span class="cc-meta">Targets: Environmental Ethics</span>
@@ -638,7 +680,7 @@
           </div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="illegal-waste-disposal" style="background-image:url(&#39;assets/cards/illegal-waste-disposal.png&#39;);"></div>
+          <div class="cc-art" data-card="illegal-waste-disposal" style="background-image:url(&#39;assets/cards/illegal-waste-disposal-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Illegal Waste Disposal</h5>
             <span class="cc-meta">Targets: Environmental Ethics</span>
@@ -646,7 +688,7 @@
           </div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="environmental-negligence" style="background-image:url(&#39;assets/cards/environmental-negligence.png&#39;);"></div>
+          <div class="cc-art" data-card="environmental-negligence" style="background-image:url(&#39;assets/cards/environmental-negligence-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Environmental Negligence</h5>
             <span class="cc-meta">Targets: Environmental Ethics</span>
@@ -660,7 +702,7 @@
       <div class="cc-subhead">🟥 Attack Cards — Engineering Management</div>
       <div class="cc-grid">
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="poor-leadership" style="background-image:url(&#39;assets/cards/poor-leadership.png&#39;);"></div>
+          <div class="cc-art" data-card="poor-leadership" style="background-image:url(&#39;assets/cards/poor-leadership-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Poor Leadership</h5>
             <span class="cc-meta">Targets: Engineering Management</span>
@@ -668,7 +710,7 @@
           </div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="conflict-of-interest" style="background-image:url(&#39;assets/cards/conflict-of-interest.png&#39;);"></div>
+          <div class="cc-art" data-card="conflict-of-interest" style="background-image:url(&#39;assets/cards/conflict-of-interest-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Conflict of Interest</h5>
             <span class="cc-meta">Targets: Engineering Management</span>
@@ -676,7 +718,7 @@
           </div>
         </div>
         <div class="ccard cc-attack">
-          <div class="cc-art" data-card="mismanagement" style="background-image:url(&#39;assets/cards/mismanagement.png&#39;);"></div>
+          <div class="cc-art" data-card="mismanagement" style="background-image:url(&#39;assets/cards/mismanagement-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Mismanagement</h5>
             <span class="cc-meta">Targets: Engineering Management</span>
@@ -690,7 +732,7 @@
       <div class="cc-subhead">🟦 Defense Cards</div>
       <div class="cc-grid">
         <div class="ccard cc-defense">
-          <div class="cc-art" data-card="firewall" style="background-image:url(&#39;assets/cards/firewall.png&#39;);"></div>
+          <div class="cc-art" data-card="firewall" style="background-image:url(&#39;assets/cards/firewall-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Firewall</h5>
             <span class="cc-meta">Blocks: Data Breach, Hacking</span>
@@ -698,7 +740,7 @@
           </div>
         </div>
         <div class="ccard cc-defense">
-          <div class="cc-art" data-card="ip-protection" style="background-image:url(&#39;assets/cards/ip-protection.png&#39;);"></div>
+          <div class="cc-art" data-card="ip-protection" style="background-image:url(&#39;assets/cards/ip-protection-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Intellectual Property Protection</h5>
             <span class="cc-meta">Blocks: Intellectual Property Theft</span>
@@ -706,7 +748,7 @@
           </div>
         </div>
         <div class="ccard cc-defense">
-          <div class="cc-art" data-card="environmental-audit" style="background-image:url(&#39;assets/cards/environmental-audit.png&#39;);"></div>
+          <div class="cc-art" data-card="environmental-audit" style="background-image:url(&#39;assets/cards/environmental-audit-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Environmental Audit</h5>
             <span class="cc-meta">Blocks: Pollution, Illegal Waste Disposal, Environmental Negligence</span>
@@ -714,7 +756,7 @@
           </div>
         </div>
         <div class="ccard cc-defense">
-          <div class="cc-art" data-card="ethics-training" style="background-image:url(&#39;assets/cards/ethics-training.png&#39;);"></div>
+          <div class="cc-art" data-card="ethics-training" style="background-image:url(&#39;assets/cards/ethics-training-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Ethics Training</h5>
             <span class="cc-meta">Blocks: Bribery, Fraudulent Report</span>
@@ -722,7 +764,7 @@
           </div>
         </div>
         <div class="ccard cc-defense">
-          <div class="cc-art" data-card="safety-inspection" style="background-image:url(&#39;assets/cards/safety-inspection.png&#39;);"></div>
+          <div class="cc-art" data-card="safety-inspection" style="background-image:url(&#39;assets/cards/safety-inspection-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Safety Inspection</h5>
             <span class="cc-meta">Blocks: Safety Cover-up</span>
@@ -730,7 +772,7 @@
           </div>
         </div>
         <div class="ccard cc-defense">
-          <div class="cc-art" data-card="conflict-resolution" style="background-image:url(&#39;assets/cards/conflict-resolution.png&#39;);"></div>
+          <div class="cc-art" data-card="conflict-resolution" style="background-image:url(&#39;assets/cards/conflict-resolution-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Conflict Resolution</h5>
             <span class="cc-meta">Blocks: Conflict of Interest, Poor Leadership</span>
@@ -738,7 +780,7 @@
           </div>
         </div>
         <div class="ccard cc-defense">
-          <div class="cc-art" data-card="project-monitoring" style="background-image:url(&#39;assets/cards/project-monitoring.png&#39;);"></div>
+          <div class="cc-art" data-card="project-monitoring" style="background-image:url(&#39;assets/cards/project-monitoring-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Project Monitoring</h5>
             <span class="cc-meta">Blocks: Mismanagement</span>
@@ -746,7 +788,7 @@
           </div>
         </div>
         <div class="ccard cc-defense">
-          <div class="cc-art" data-card="code-of-ethics" style="background-image:url(&#39;assets/cards/code-of-ethics.png&#39;);"></div>
+          <div class="cc-art" data-card="code-of-ethics" style="background-image:url(&#39;assets/cards/code-of-ethics-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Code of Ethics</h5>
             <span class="cc-meta">Blocks: Any Attack Card (wild)</span>
@@ -760,7 +802,7 @@
       <div class="cc-subhead">🟩 Repair Cards</div>
       <div class="cc-grid">
         <div class="ccard cc-repair">
-          <div class="cc-art" data-card="security-update" style="background-image:url(&#39;assets/cards/security-update.png&#39;);"></div>
+          <div class="cc-art" data-card="security-update" style="background-image:url(&#39;assets/cards/security-update-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Security Update</h5>
             <span class="cc-meta">Repairs: Computer Ethics</span>
@@ -768,7 +810,7 @@
           </div>
         </div>
         <div class="ccard cc-repair">
-          <div class="cc-art" data-card="environmental-cleanup" style="background-image:url(&#39;assets/cards/environmental-cleanup.png&#39;);"></div>
+          <div class="cc-art" data-card="environmental-cleanup" style="background-image:url(&#39;assets/cards/environmental-cleanup-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Environmental Cleanup</h5>
             <span class="cc-meta">Repairs: Environmental Ethics</span>
@@ -776,7 +818,7 @@
           </div>
         </div>
         <div class="ccard cc-repair">
-          <div class="cc-art" data-card="ethics-seminar" style="background-image:url(&#39;assets/cards/ethics-seminar.png&#39;);"></div>
+          <div class="cc-art" data-card="ethics-seminar" style="background-image:url(&#39;assets/cards/ethics-seminar-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Ethics Seminar</h5>
             <span class="cc-meta">Repairs: Business Ethics</span>
@@ -784,7 +826,7 @@
           </div>
         </div>
         <div class="ccard cc-repair">
-          <div class="cc-art" data-card="leadership-workshop" style="background-image:url(&#39;assets/cards/leadership-workshop.png&#39;);"></div>
+          <div class="cc-art" data-card="leadership-workshop" style="background-image:url(&#39;assets/cards/leadership-workshop-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Leadership Workshop</h5>
             <span class="cc-meta">Repairs: Engineering Management</span>
@@ -798,7 +840,7 @@
       <div class="cc-subhead">🟨 Special / Event Cards</div>
       <div class="cc-grid">
         <div class="ccard cc-special">
-          <div class="cc-art" data-card="government-audit" style="background-image:url(&#39;assets/cards/government-audit.png&#39;);"></div>
+          <div class="cc-art" data-card="government-audit" style="background-image:url(&#39;assets/cards/government-audit-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Government Audit</h5>
             <span class="cc-meta dur">Duration: Immediate</span>
@@ -806,7 +848,7 @@
           </div>
         </div>
         <div class="ccard cc-special">
-          <div class="cc-art" data-card="iso-certification" style="background-image:url(&#39;assets/cards/iso-certification.png&#39;);"></div>
+          <div class="cc-art" data-card="iso-certification" style="background-image:url(&#39;assets/cards/iso-certification-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>ISO Certification</h5>
             <span class="cc-meta dur">Duration: Immediate</span>
@@ -814,7 +856,7 @@
           </div>
         </div>
         <div class="ccard cc-special">
-          <div class="cc-art" data-card="whistleblower" style="background-image:url(&#39;assets/cards/whistleblower.png&#39;);"></div>
+          <div class="cc-art" data-card="whistleblower" style="background-image:url(&#39;assets/cards/whistleblower-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Whistleblower</h5>
             <span class="cc-meta dur">Duration: Immediate</span>
@@ -822,7 +864,7 @@
           </div>
         </div>
         <div class="ccard cc-special">
-          <div class="cc-art" data-card="public-complaint" style="background-image:url(&#39;assets/cards/public-complaint.png&#39;);"></div>
+          <div class="cc-art" data-card="public-complaint" style="background-image:url(&#39;assets/cards/public-complaint-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Public Complaint</h5>
             <span class="cc-meta dur">Duration: One full turn</span>
@@ -830,7 +872,7 @@
           </div>
         </div>
         <div class="ccard cc-special">
-          <div class="cc-art" data-card="budget-increase" style="background-image:url(&#39;assets/cards/budget-increase.png&#39;);"></div>
+          <div class="cc-art" data-card="budget-increase" style="background-image:url(&#39;assets/cards/budget-increase-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Budget Increase</h5>
             <span class="cc-meta dur">Duration: Immediate</span>
@@ -838,7 +880,7 @@
           </div>
         </div>
         <div class="ccard cc-special">
-          <div class="cc-art" data-card="emergency-meeting" style="background-image:url(&#39;assets/cards/emergency-meeting.png&#39;);"></div>
+          <div class="cc-art" data-card="emergency-meeting" style="background-image:url(&#39;assets/cards/emergency-meeting-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Emergency Meeting</h5>
             <span class="cc-meta dur">Duration: Immediate</span>
@@ -846,7 +888,7 @@
           </div>
         </div>
         <div class="ccard cc-special">
-          <div class="cc-art" data-card="multinational-expansion" style="background-image:url(&#39;assets/cards/multinational-expansion.png&#39;);"></div>
+          <div class="cc-art" data-card="multinational-expansion" style="background-image:url(&#39;assets/cards/multinational-expansion-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Multinational Expansion</h5>
             <span class="cc-meta dur">Duration: Immediate</span>
@@ -854,7 +896,7 @@
           </div>
         </div>
         <div class="ccard cc-special">
-          <div class="cc-art" data-card="revised-code-of-ethics" style="background-image:url(&#39;assets/cards/revised-code-of-ethics.png&#39;);"></div>
+          <div class="cc-art" data-card="revised-code-of-ethics" style="background-image:url(&#39;assets/cards/revised-code-of-ethics-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Revised Code of Ethics</h5>
             <span class="cc-meta dur">Duration: Immediate (new policy stays active until replaced)</span>
@@ -869,7 +911,7 @@
       <div class="cc-subhead">🟪 Ethics Policy Cards</div>
       <div class="cc-grid">
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-harm" style="background-image:url(&#39;assets/cards/policy-harm.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-harm" style="background-image:url(&#39;assets/cards/policy-harm-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Do Not Use a Computer to Harm Other People</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -877,7 +919,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-interfere" style="background-image:url(&#39;assets/cards/policy-interfere.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-interfere" style="background-image:url(&#39;assets/cards/policy-interfere-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Do Not Interfere with Other People's Work</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -885,7 +927,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-snoop" style="background-image:url(&#39;assets/cards/policy-snoop.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-snoop" style="background-image:url(&#39;assets/cards/policy-snoop-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Do Not Snoop Around in Other People's Files</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -893,7 +935,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-steal" style="background-image:url(&#39;assets/cards/policy-steal.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-steal" style="background-image:url(&#39;assets/cards/policy-steal-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Do Not Use a Computer to Steal</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -901,7 +943,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-false-witness" style="background-image:url(&#39;assets/cards/policy-false-witness.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-false-witness" style="background-image:url(&#39;assets/cards/policy-false-witness-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Do Not Bear False Witness</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -909,7 +951,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-copy-software" style="background-image:url(&#39;assets/cards/policy-copy-software.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-copy-software" style="background-image:url(&#39;assets/cards/policy-copy-software-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Do Not Copy Software You Did Not Pay For</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -917,7 +959,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-intellectual-output" style="background-image:url(&#39;assets/cards/policy-intellectual-output.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-intellectual-output" style="background-image:url(&#39;assets/cards/policy-intellectual-output-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Do Not Use Other People's Intellectual Output</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -925,7 +967,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-social-consequences" style="background-image:url(&#39;assets/cards/policy-social-consequences.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-social-consequences" style="background-image:url(&#39;assets/cards/policy-social-consequences-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Think About the Social Consequences of the Program You Are Writing</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -933,7 +975,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-public-good" style="background-image:url(&#39;assets/cards/policy-public-good.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-public-good" style="background-image:url(&#39;assets/cards/policy-public-good-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Always Consider the Public Good</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -941,7 +983,7 @@
           </div>
         </div>
         <div class="ccard cc-policy">
-          <div class="cc-art" data-card="policy-consideration-respect" style="background-image:url(&#39;assets/cards/policy-consideration-respect.png&#39;);"></div>
+          <div class="cc-art" data-card="policy-consideration-respect" style="background-image:url(&#39;assets/cards/policy-consideration-respect-thumb.png&#39;);"></div>
           <div class="cc-body">
             <h5>Use Computers with Consideration and Respect</h5>
             <span class="cc-meta dur">Duration: Until replaced</span>
@@ -1011,6 +1053,78 @@
       <div class="qr-item"><div class="glyph">✋</div><p>Hand limit: 7</p></div>
     </div>
     <p style="text-align:center; font-family:var(--mono); font-size:11.5px; color:#8fa1bd; margin-top:18px;">Policies remain active until replaced by a Revised Code of Ethics card.</p>
+  </div>
+</section>
+
+<section id="jokers">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">🃏</span><h2>The Jokers</h2><span class="sec-sub">The team behind Ethics Under Attack</span></div>
+    <p class="jokers-intro">Every deck needs its wild cards. Meet the team who designed, wrote, and built Ethics Under Attack.</p>
+    <div class="jokers-grid">
+      <div class="joker-card">
+        <span class="joker-pip">🃏</span>
+        <div class="joker-photo" style="background-image:url('assets/creators/aclan-yancy.png');"></div>
+        <span class="joker-pip br">🃏</span>
+        <div class="joker-body">
+          <p class="name">Yancy Aclan</p>
+          <p class="surname">Co-Creator</p>
+        </div>
+      </div>
+      <div class="joker-card">
+        <span class="joker-pip">🃏</span>
+        <div class="joker-photo" style="background-image:url('assets/creators/buno-carl-axle.png');"></div>
+        <span class="joker-pip br">🃏</span>
+        <div class="joker-body">
+          <p class="name">Carl Axle Buno</p>
+          <p class="surname">Co-Creator</p>
+        </div>
+      </div>
+      <div class="joker-card">
+        <span class="joker-pip">🃏</span>
+        <div class="joker-photo" style="background-image:url('assets/creators/borja-ariza.png');"></div>
+        <span class="joker-pip br">🃏</span>
+        <div class="joker-body">
+          <p class="name">Ariza Borja</p>
+          <p class="surname">Co-Creator</p>
+        </div>
+      </div>
+      <div class="joker-card">
+        <span class="joker-pip">🃏</span>
+        <div class="joker-photo" style="background-image:url('assets/creators/soriano-heart.png');"></div>
+        <span class="joker-pip br">🃏</span>
+        <div class="joker-body">
+          <p class="name">Heart Soriano</p>
+          <p class="surname">Co-Creator</p>
+        </div>
+      </div>
+      <div class="joker-card">
+        <span class="joker-pip">🃏</span>
+        <div class="joker-photo" style="background-image:url('assets/creators/manalang-matt-amiel.png');"></div>
+        <span class="joker-pip br">🃏</span>
+        <div class="joker-body">
+          <p class="name">Matt Amiel Manalang</p>
+          <p class="surname">Co-Creator</p>
+        </div>
+      </div>
+      <div class="joker-card">
+        <span class="joker-pip">🃏</span>
+        <div class="joker-photo" style="background-image:url('assets/creators/bool-mark-luke.png');"></div>
+        <span class="joker-pip br">🃏</span>
+        <div class="joker-body">
+          <p class="name">Mark Luke Bool</p>
+          <p class="surname">Co-Creator</p>
+        </div>
+      </div>
+      <div class="joker-card">
+        <span class="joker-pip">🃏</span>
+        <div class="joker-photo" style="background-image:url('assets/creators/untalan-john-princelee.png');"></div>
+        <span class="joker-pip br">🃏</span>
+        <div class="joker-body">
+          <p class="name">John Princelee Untalan</p>
+          <p class="surname">Co-Creator</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

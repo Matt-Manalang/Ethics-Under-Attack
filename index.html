@@ -81,6 +81,32 @@ a{color:inherit;}
 }
 .topnav .links a:hover{color:var(--paper); border-bottom-color:var(--gold);}
 
+/* ---------- search bar ---------- */
+.search-bar-wrap{
+  position:sticky; top:56px; z-index:45;
+  background:rgba(15,34,66,.96);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--navy-line);
+  padding:10px 0;
+}
+.search-bar-inner{display:flex; align-items:center; gap:10px;}
+.search-icon{font-size:15px; opacity:.75; flex-shrink:0;}
+#siteSearch{
+  flex:1; font-family:var(--mono); font-size:13px; padding:9px 12px;
+  border:1px solid var(--navy-line); border-radius:2px; background:var(--paper); color:var(--ink);
+}
+#siteSearch::placeholder{color:#7a6f52;}
+#siteSearch:focus{outline:none; border-color:var(--gold);}
+.search-count{font-family:var(--mono); font-size:11px; color:#8fa1bd; white-space:nowrap; flex-shrink:0;}
+.search-clear{
+  font-family:var(--mono); background:none; border:1px solid var(--navy-line); color:var(--paper);
+  border-radius:2px; padding:7px 11px; cursor:pointer; font-size:12px; flex-shrink:0;
+}
+.search-clear:hover{border-color:var(--red); color:var(--red);}
+.search-no-results{
+  display:none; font-family:var(--mono); font-size:12.5px; color:#8fa1bd; text-align:center; padding:10px 0 0;
+}
+
 /* ---------- hero ---------- */
 .hero{
   position:relative; z-index:1;
@@ -531,6 +557,16 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
     </div>
   </div>
 </nav>
+
+<div class="search-bar-wrap">
+  <div class="wrap search-bar-inner">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="siteSearch" placeholder="Search cards, policies, FAQ…" autocomplete="off">
+    <span class="search-count" id="searchCount"></span>
+    <button class="search-clear" id="searchClear" style="display:none;" type="button">✕ Clear</button>
+  </div>
+  <p class="wrap search-no-results" id="searchNoResults">No matching cards or FAQ entries. Try a different term.</p>
+</div>
 
 <header class="hero" id="top">
   <div class="wrap hero-inner">
@@ -1235,6 +1271,78 @@ card.addEventListener("click", () => revealCard(card));   // mobile support
   
   grid.appendChild(card);
 }
+</script>
+
+<script>
+/* ---------- Site search: filters Card Compendium + FAQ live ---------- */
+(function(){
+  const input = document.getElementById('siteSearch');
+  const countEl = document.getElementById('searchCount');
+  const clearBtn = document.getElementById('searchClear');
+  const noResultsEl = document.getElementById('searchNoResults');
+
+  function filterCompendium(query){
+    let visible = 0;
+    document.querySelectorAll('#compendium .cc-group').forEach(group => {
+      let groupHasMatch = false;
+      group.querySelectorAll('.ccard').forEach(card => {
+        const match = !query || card.textContent.toLowerCase().includes(query);
+        card.style.display = match ? '' : 'none';
+        if(match){ groupHasMatch = true; visible++; }
+      });
+      group.style.display = groupHasMatch ? '' : 'none';
+    });
+    return visible;
+  }
+
+  function filterFAQ(query){
+    let visible = 0;
+    document.querySelectorAll('#faq .faq-group').forEach(group => {
+      let groupHasMatch = false;
+      group.querySelectorAll('.faq-item').forEach(item => {
+        const match = !query || item.textContent.toLowerCase().includes(query);
+        item.style.display = match ? '' : 'none';
+        if(match){
+          groupHasMatch = true;
+          visible++;
+          if(query) item.setAttribute('open', '');
+          else item.removeAttribute('open');
+        } else {
+          item.removeAttribute('open');
+        }
+      });
+      group.style.display = groupHasMatch ? '' : 'none';
+    });
+    return visible;
+  }
+
+  function runSearch(){
+    const query = input.value.trim().toLowerCase();
+    clearBtn.style.display = query ? 'inline-flex' : 'none';
+
+    if(!query){
+      filterCompendium('');
+      filterFAQ('');
+      countEl.textContent = '';
+      noResultsEl.style.display = 'none';
+      return;
+    }
+
+    const compendiumMatches = filterCompendium(query);
+    const faqMatches = filterFAQ(query);
+    const total = compendiumMatches + faqMatches;
+
+    countEl.textContent = total + (total === 1 ? ' result' : ' results');
+    noResultsEl.style.display = total === 0 ? 'block' : 'none';
+  }
+
+  input.addEventListener('input', runSearch);
+  clearBtn.addEventListener('click', () => {
+    input.value = '';
+    runSearch();
+    input.focus();
+  });
+})();
 </script>
 
 </body>

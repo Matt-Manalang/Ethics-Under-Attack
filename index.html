@@ -452,6 +452,18 @@ section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line);
   color:var(--red-dim); margin-bottom:4px;
 }
 .faq-body strong{color:var(--ink);}
+.faq-body table.faq-tbl{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:12px; margin:8px 0 12px;}
+.faq-body table.faq-tbl th, .faq-body table.faq-tbl td{text-align:left; padding:6px 8px; border-bottom:1px solid #cbbe97;}
+.faq-body table.faq-tbl th{text-transform:uppercase; letter-spacing:.05em; font-size:10px; color:var(--red-dim);}
+.faq-body .subtag{
+  display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--purple); border:1px solid var(--purple); border-radius:2px; padding:2px 7px; margin:14px 0 8px;
+}
+.faq-body .subtag:first-child{margin-top:0;}
+.faq-outro{
+  font-family:var(--mono); font-size:12px; color:#8fa1bd; line-height:1.7; font-style:italic;
+  max-width:78ch; margin:30px 0 0; text-align:center;
+}
 
 /* ---------- reference table ---------- */
 table.inv{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:13.5px;}
@@ -905,13 +917,12 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
     <p class="faq-note">Tap a question to expand it.</p>
 
     <div class="faq-group">
-      <div class="cc-subhead">General Gameplay</div>
+      <div class="cc-subhead">🎮 General Gameplay</div>
       <div class="faq-list">
         <details class="faq-item">
           <summary><span class="qtag">Q1</span>Do I have to draw a card at the beginning of every turn?</summary>
           <div class="faq-body">
-            <p>Yes. Drawing 1 card during the Draw Phase is mandatory unless an Active Ethics Policy or another card specifically changes this rule.</p>
-            <div class="ex"><span class="exl">Example</span>Start your turn → Draw 1 card → Continue to your Play Phase.</div>
+            <p>Yes. Drawing 1 card during the Draw Phase is mandatory unless an Active Ethics Policy or another card specifically changes this rule. Every turn begins with the Draw Phase before any other actions can be taken.</p>
           </div>
         </details>
         <details class="faq-item">
@@ -919,28 +930,34 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
           <div class="faq-body">
             <p>Yes. After drawing your mandatory card, you may choose to:</p>
             <ul>
-              <li>Play one Attack Card,</li>
-              <li>Play one Repair Card,</li>
-              <li>Play one Special/Event Card, or</li>
-              <li>Play no card at all and simply end your turn.</li>
+              <li>🟥 Play one Attack Card</li>
+              <li>🟦 Play one Repair Card</li>
+              <li>🟨 Play one Special/Event Card</li>
+              <li>Play no card at all</li>
             </ul>
-            <p>Defense Cards cannot be played during your own turn unless another card specifically allows it.</p>
+            <p>Choosing not to play a card allows you to save it for a later turn.</p>
+            <p>Defense Cards cannot be played during your own turn unless another card specifically states otherwise.</p>
           </div>
         </details>
         <details class="faq-item">
-          <summary><span class="qtag">Q3</span>When do I receive new cards?</summary>
+          <summary><span class="qtag">Q3</span>When do players receive new cards?</summary>
           <div class="faq-body">
-            <p>Players receive new cards by:</p>
+            <p>Players receive new cards in the following ways:</p>
             <ul>
-              <li>Drawing 1 mandatory card at the beginning of every turn.</li>
-              <li>Playing cards that instruct them to draw additional cards (such as Budget Increase or Multinational Expansion).</li>
+              <li>Draw 1 mandatory card at the beginning of every turn.</li>
+              <li>Play Special/Event Cards that instruct them to draw additional cards (such as Budget Increase or Multinational Expansion).</li>
             </ul>
           </div>
         </details>
         <details class="faq-item">
           <summary><span class="qtag">Q4</span>What happens if the Main Deck runs out of cards?</summary>
           <div class="faq-body">
-            <p>Shuffle the Discard Pile to create a new Main Deck, then continue drawing normally.</p>
+            <p>If the Main Deck becomes empty:</p>
+            <ul>
+              <li>Shuffle the entire Discard Pile.</li>
+              <li>Create a new Main Deck.</li>
+              <li>Continue drawing cards normally.</li>
+            </ul>
             <p>Ethics Cards and Ethics Policy Cards are never shuffled into the Main Deck.</p>
           </div>
         </details>
@@ -948,90 +965,146 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
     </div>
 
     <div class="faq-group">
-      <div class="cc-subhead">Ethics Policy Questions</div>
+      <div class="cc-subhead">🟪 Ethics Policy Questions</div>
       <div class="faq-list">
         <details class="faq-item">
           <summary><span class="qtag">Q5</span>Under "Do Not Use a Computer to Harm Other People," what happens if I attack the same opponent on consecutive turns?</summary>
           <div class="faq-body">
-            <p>Your second attack is cancelled. The Attack Card is immediately discarded without resolving its effect. The targeted player does not need to play a Defense Card because the attack never occurs.</p>
-            <div class="ex"><span class="exl">Example</span>Turn 1: Attack Player B ✅<br>Turn 2: Attack Player B again ❌ — the second Attack Card is discarded.</div>
+            <p>While this policy is active, you cannot attack the same opponent on two consecutive turns. If you attempt to do so:</p>
+            <ul>
+              <li>Your Attack Card is immediately discarded.</li>
+              <li>The attack has no effect.</li>
+              <li>The targeted player does not play a Defense Card.</li>
+              <li>Your turn immediately proceeds to the End Phase.</li>
+            </ul>
+            <div class="ex"><span class="exl">Example</span>Turn 1: Attack Player B ✅<br>Turn 2: Attack Player B again ❌<br>The second attack is cancelled because you attacked the same opponent on your previous turn.</div>
           </div>
         </details>
         <details class="faq-item">
-          <summary><span class="qtag">Q6</span>Under "Do Not Interfere with Other People's Work," what does "one Attack Card per full round" mean?</summary>
+          <summary><span class="qtag">Q6</span>What is the difference between "Do Not Use a Computer to Harm Other People" and "Do Not Interfere with Other People's Work"?</summary>
           <div class="faq-body">
-            <p>A full round means every player has completed one turn. While this policy is active, you may play only one Attack Card during each full round. Once a new round begins, you may attack again.</p>
-            <div class="ex"><span class="exl">Example (4 players)</span>Round 1 — Player A attacks ✅, then Players B, C, and D finish their turns.<br>Round 2 begins — Player A may attack again because a new round has started.</div>
+            <p>Although both policies prevent repeatedly targeting the same opponent, they work differently.</p>
+            <span class="subtag">Do Not Use a Computer to Harm Other People</span>
+            <p>This policy only checks your previous turn. You cannot attack the same opponent on two consecutive turns.</p>
+            <table class="faq-tbl">
+              <tr><th>Your Turn</th><th>Action</th><th>Result</th></tr>
+              <tr><td>Turn 1</td><td>Attack Player B</td><td>✅ Allowed</td></tr>
+              <tr><td>Turn 2</td><td>Attack Player B</td><td>❌ Not Allowed</td></tr>
+              <tr><td>Turn 3</td><td>Attack Player B</td><td>✅ Allowed</td></tr>
+            </table>
+            <p>Since you did not attack Player B on your previous turn, you may attack them again.</p>
+            <span class="subtag">Do Not Interfere with Other People's Work</span>
+            <p>This policy requires you to attack a different opponent before attacking the same player again. Skipping your Attack Phase, playing a Repair Card, playing a Special/Event Card, or simply ending your turn does not reset this restriction.</p>
+            <div class="ex"><span class="exl">Example — Allowed</span>Turn 1: Attack Player B ✅<br>Turn 2: Attack Player C ✅<br>Turn 3: Attack Player B ✅<br>Because you attacked another opponent before returning to Player B.</div>
+            <div class="ex"><span class="exl">Example — Not Allowed</span>Turn 1: Attack Player B ✅<br>Turn 2: Play Budget Increase ✅<br>Turn 3: Attack Player B ❌<br>You never attacked another opponent.</div>
+            <div class="ex"><span class="exl">Example — Not Allowed</span>Turn 1: Attack Player B ✅<br>Turn 2: Repair an Ethics Card ✅<br>Turn 3: Attack Player B ❌<br>Repairing or passing your turn does not satisfy the policy.</div>
           </div>
         </details>
         <details class="faq-item">
-          <summary><span class="qtag">Q7</span>Under "Do Not Snoop Around in Other People's Files," what happens to the chosen card?</summary>
+          <summary><span class="qtag">Q7</span>Under "Do Not Snoop Around in Other People's Files," how are Whistleblower and Government Audit affected?</summary>
           <div class="faq-body">
-            <p>Normally, Whistleblower lets you steal a card. With this Ethics Policy active: look at the opponent's hand, choose one card, return that card to the Main Deck, then shuffle the Main Deck.</p>
-            <p>The opponent does not draw a replacement card. You also do not gain the selected card.</p>
+            <p>This policy changes the effects of both cards.</p>
+            <span class="subtag">Whistleblower</span>
+            <p>Normally, you steal one card from an opponent. While this policy is active: look at the opponent's hand — you cannot steal any cards.</p>
+            <span class="subtag">Government Audit</span>
+            <p>Normally, the opponent discards 2 random cards. While this policy is active: look at the opponent's hand, choose one card, and shuffle that card back into the Main Deck.</p>
+            <p>The chosen card is not discarded, and the opponent does not draw a replacement card.</p>
           </div>
         </details>
         <details class="faq-item">
           <summary><span class="qtag">Q8</span>Under "Do Not Bear False Witness," who skips the Draw Phase?</summary>
           <div class="faq-body">
-            <p>The targeted player skips their next Draw Phase.</p>
-            <div class="ex"><span class="exl">Example</span>Player A plays Fraudulent Report on Player B. Instead of destroying Business Ethics, Player B simply skips drawing a card at the beginning of their next turn. Player A is not affected.</div>
+            <p>The targeted player skips the Draw Phase during their next turn. Instead of destroying Business Ethics, Fraudulent Report temporarily prevents that player from drawing their mandatory card.</p>
+            <p>They may still:</p>
+            <ul>
+              <li>Play cards already in their hand.</li>
+              <li>Use Defense Cards.</li>
+              <li>Continue the rest of their turn normally.</li>
+            </ul>
           </div>
         </details>
         <details class="faq-item">
-          <summary><span class="qtag">Q9</span>Under "Do Not Copy Software You Did Not Pay For," am I eliminated if Computer Ethics is disabled and all my other Ethics Cards are destroyed?</summary>
+          <summary><span class="qtag">Q9</span>Under "Do Not Copy Software You Did Not Pay For," what happens if Computer Ethics is disabled and my other Ethics Cards are destroyed?</summary>
           <div class="faq-body">
-            <p>No. A disabled Computer Ethics card still counts as one of your remaining Ethics Cards. At the beginning of your next turn, it automatically returns to its normal active state. You are only eliminated if all four Ethics Cards are destroyed.</p>
+            <p>A disabled Computer Ethics card is not considered destroyed. If Data Breach or Hacking disables your Computer Ethics:</p>
+            <ul>
+              <li>Turn the card sideways.</li>
+              <li>It remains one of your Ethics Cards.</li>
+              <li>At the beginning of your next turn, it automatically returns face-up.</li>
+            </ul>
+            <p>You are not eliminated while your Computer Ethics is disabled.</p>
           </div>
         </details>
         <details class="faq-item">
           <summary><span class="qtag">Q10</span>Under "Use Computers with Consideration and Respect," what happens if the targeted player discards a card?</summary>
           <div class="faq-body">
-            <p>Before your Attack Card resolves, the targeted player may discard 1 card from their hand. If they do, you must choose another valid opponent for the same Attack Card — you do not discard the Attack Card immediately. If no other legal opponent exists, the Attack Card is discarded and has no effect.</p>
-            <div class="ex"><span class="exl">Example</span>Player A plays Bribery targeting Player B. Player B discards one card. Player A may now target Player C using the same Bribery card. If no other opponent can legally be attacked, Bribery is discarded without affecting anyone.</div>
+            <p>Before your Attack Card resolves, the targeted player may discard one card. If they do:</p>
+            <ul>
+              <li>You must immediately choose another valid opponent using the same Attack Card.</li>
+              <li>If another valid opponent exists, the attack continues against the new target.</li>
+              <li>If no valid opponent exists, the Attack Card is discarded without effect.</li>
+            </ul>
+            <p>You do not play another Attack Card or return the Attack Card to your hand.</p>
           </div>
         </details>
       </div>
     </div>
 
     <div class="faq-group">
-      <div class="cc-subhead">Special / Event Cards</div>
+      <div class="cc-subhead">🟨 Special/Event Card Questions</div>
       <div class="faq-list">
         <details class="faq-item">
           <summary><span class="qtag">Q11</span>When I play Budget Increase, do I draw my normal card first?</summary>
           <div class="faq-body">
-            <p>Yes. Your normal Draw Phase always happens first.</p>
-            <div class="ex"><span class="exl">Example</span>Start your turn → Draw 1 mandatory card → Play Budget Increase → Immediately draw 2 additional cards.</div>
-            <p>The two cards from Budget Increase are extra cards and do not replace your normal draw.</p>
+            <p>Yes. Every turn always begins with the mandatory Draw Phase.</p>
+            <div class="ex"><span class="exl">Example</span>Draw 1 card during your Draw Phase → Play Budget Increase → Immediately draw 2 additional cards.</div>
+            <p>The two cards gained from Budget Increase are extra cards and do not replace your normal draw.</p>
           </div>
         </details>
         <details class="faq-item">
-          <summary><span class="qtag">Q12</span>Can Multinational Expansion let me ignore the Active Ethics Policy?</summary>
+          <summary><span class="qtag">Q12</span>Can Multinational Expansion ignore the current Active Ethics Policy?</summary>
           <div class="faq-body">
-            <p>No. If you choose to play an additional Attack Card, it must still follow all normal game rules and any restrictions imposed by the current Active Ethics Policy.</p>
+            <p>No. If you choose the option to play one additional Attack Card, that Attack Card must still follow:</p>
+            <ul>
+              <li>The normal game rules.</li>
+              <li>The current Active Ethics Policy.</li>
+            </ul>
+            <p>For example, if an Ethics Policy prevents you from attacking a certain opponent, Multinational Expansion does not override that restriction.</p>
           </div>
         </details>
       </div>
     </div>
 
     <div class="faq-group">
-      <div class="cc-subhead">Winning the Game</div>
+      <div class="cc-subhead">🏆 Winning the Game</div>
       <div class="faq-list">
         <details class="faq-item">
           <summary><span class="qtag">Q13</span>When is a player eliminated?</summary>
           <div class="faq-body">
-            <p>A player is eliminated when all four of their Ethics Cards are destroyed. Disabled Ethics Cards (such as Computer Ethics under "Do Not Copy Software You Did Not Pay For") do not count as destroyed.</p>
+            <p>A player is eliminated only when all four Ethics Cards are destroyed. A disabled Computer Ethics card (from the Do Not Copy Software You Did Not Pay For policy) is not considered destroyed and still counts as an active Ethics Card.</p>
           </div>
         </details>
         <details class="faq-item">
-          <summary><span class="qtag">Q14</span>What happens when the Ethics Policy changes?</summary>
+          <summary><span class="qtag">Q14</span>When does the Active Ethics Policy change?</summary>
           <div class="faq-body">
-            <p>An Ethics Policy changes when three complete rounds have been played, or a Revised Code of Ethics card is played.</p>
-            <p>When a new policy is revealed: the previous Ethics Policy is discarded, the new Ethics Policy immediately becomes active, and all players must follow the new policy from that point onward.</p>
+            <p>The Active Ethics Policy changes when either of the following occurs:</p>
+            <ul>
+              <li>Three complete rounds have been played, or</li>
+              <li>A player uses the Revised Code of Ethics Special/Event Card.</li>
+            </ul>
+            <p>When the policy changes:</p>
+            <ul>
+              <li>Discard the current Active Ethics Policy.</li>
+              <li>Reveal the next Ethics Policy from the Ethics Policy Deck.</li>
+              <li>Its effects immediately apply to all players.</li>
+            </ul>
+            <p>If the Ethics Policy Deck becomes empty, shuffle the discarded Ethics Policy Cards to create a new Ethics Policy Deck and continue playing.</p>
           </div>
         </details>
       </div>
     </div>
+
+    <p class="faq-outro">This FAQ covers the most common gameplay questions and clarifies how card effects, Ethics Policies, and turn mechanics interact during the game.</p>
   </div>
 </section>
 

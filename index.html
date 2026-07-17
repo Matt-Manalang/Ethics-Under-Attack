@@ -380,10 +380,13 @@ section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line);
 }
 
 .joker-photo{
-  aspect-ratio:5/7;
-  background-size:cover;
-  background-position:center;
-  background-color:var(--paper-dim);
+    flex:1;
+    min-height:240px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color:var(--paper-dim);
+}
 }
 
 .joker-body{
@@ -936,22 +939,23 @@ for (let i = 0; i < creators.length; i++) {
     `;
 
     
- card.addEventListener("mouseenter", () => {
-
-    if (card.classList.contains("revealed")) return;
-    if (remaining.length === 0) return;
+function revealCard(card){
+    if(card.classList.contains("revealed")) return;
+    if(remaining.length === 0) return;
 
     const creator = randomRemaining();
 
     card.querySelector(".joker-photo").style.backgroundImage =
-        `url('${creator.image}')`;
+        `url("${creator.image}")`;
 
     card.querySelector(".name").textContent = creator.name;
     card.querySelector(".surname").textContent = creator.role;
 
     card.classList.add("revealed");
+}
 
-});
+card.addEventListener("mouseenter", () => revealCard(card));
+card.addEventListener("click", () => revealCard(card));   // mobile support
   
   grid.appendChild(card);
 }

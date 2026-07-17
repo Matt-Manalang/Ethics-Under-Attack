@@ -98,6 +98,7 @@ a{color:inherit;}
 #siteSearch::placeholder{color:#7a6f52;}
 #siteSearch:focus{outline:none; border-color:var(--gold);}
 .search-count{font-family:var(--mono); font-size:11px; color:#8fa1bd; white-space:nowrap; flex-shrink:0;}
+.search-hint{font-family:var(--mono); font-size:10px; color:#5f7089; white-space:nowrap; flex-shrink:0; display:none;}
 .search-clear{
   font-family:var(--mono); background:none; border:1px solid var(--navy-line); color:var(--paper);
   border-radius:2px; padding:7px 11px; cursor:pointer; font-size:12px; flex-shrink:0;
@@ -563,6 +564,7 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
     <span class="search-icon">🔍</span>
     <input type="text" id="siteSearch" placeholder="Search cards, policies, FAQ…" autocomplete="off">
     <span class="search-count" id="searchCount"></span>
+    <span class="search-hint" id="searchHint">press ↵ to jump</span>
     <button class="search-clear" id="searchClear" style="display:none;" type="button">✕ Clear</button>
   </div>
   <p class="wrap search-no-results" id="searchNoResults">No matching cards or FAQ entries. Try a different term.</p>
@@ -1319,6 +1321,7 @@ card.addEventListener("click", () => revealCard(card));   // mobile support
   function runSearch(){
     const query = input.value.trim().toLowerCase();
     clearBtn.style.display = query ? 'inline-flex' : 'none';
+    document.getElementById('searchHint').style.display = query ? 'inline' : 'none';
 
     if(!query){
       filterCompendium('');
@@ -1336,7 +1339,36 @@ card.addEventListener("click", () => revealCard(card));   // mobile support
     noResultsEl.style.display = total === 0 ? 'block' : 'none';
   }
 
+  function jumpToFirstMatch(){
+    const query = input.value.trim().toLowerCase();
+    if(!query) return;
+
+    const candidates = [];
+    document.querySelectorAll('#compendium .ccard').forEach(el => {
+      if(el.style.display !== 'none') candidates.push(el);
+    });
+    document.querySelectorAll('#faq .faq-item').forEach(el => {
+      if(el.style.display !== 'none') candidates.push(el);
+    });
+    if(candidates.length === 0) return;
+
+    const target = candidates[0];
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    target.style.transition = 'box-shadow .3s ease';
+    const prevShadow = target.style.boxShadow;
+    target.style.boxShadow = '0 0 0 3px var(--gold), 0 10px 24px rgba(0,0,0,.35)';
+    setTimeout(() => { target.style.boxShadow = prevShadow; }, 1600);
+  }
+
   input.addEventListener('input', runSearch);
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      runSearch();
+      jumpToFirstMatch();
+    }
+  });
   clearBtn.addEventListener('click', () => {
     input.value = '';
     runSearch();

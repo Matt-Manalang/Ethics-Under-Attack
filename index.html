@@ -347,6 +347,26 @@ section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line);
   max-width:78ch; margin:0 0 30px;
 }
 
+/* ---------- joker pack victory callout ---------- */
+.joker-callout{
+  background:linear-gradient(155deg,#2b1a3f,#1a0f2b);
+  border:2px solid var(--gold-line);
+  border-radius:6px;
+  padding:26px 28px;
+  margin:22px 0;
+  box-shadow:0 12px 30px rgba(0,0,0,.4);
+}
+.joker-callout .jc-eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold); margin:0 0 6px;
+}
+.joker-callout h3{
+  font-family:var(--display); font-size:30px; letter-spacing:.03em; margin:0 0 12px; color:#fff;
+}
+.joker-callout p{font-size:14.5px; line-height:1.65; color:#e6dcc2; margin:0 0 10px;}
+.joker-callout p:last-child{margin-bottom:0;}
+.joker-callout ul{margin:8px 0 0; padding-left:20px; color:#e6dcc2; font-size:14px; line-height:1.7;}
+
 /* ---------- the jokers (random reveal) ---------- */
 .jokers-intro{
   font-family:var(--mono); font-size:13px; color:#8fa1bd; line-height:1.7;
@@ -949,17 +969,36 @@ footer p{font-family:var(--mono); font-size:11px; color:#6d7f9d; letter-spacing:
 
     <p id="jokersHint" class="jokers-intro" style="text-align:center; margin-top:24px; margin-bottom:0;">Flip every card above to unlock the Joker Pack rule.</p>
     <div class="panel" id="jokerPackPanel" style="margin-top:20px; display:none; opacity:0; transition:opacity .6s ease;">
-      <h3>Optional Rule: The Joker Pack</h3>
-      <p>For players looking for a more chaotic and unpredictable experience, Ethics Under Attack includes an optional Joker Pack inspired by the classic Joker cards found in standard playing card decks. These cards have no gameplay effect — they cannot be played, discarded for an effect, used as a defense, or counted as any card type. Their only purpose is to occupy space in a player's hand, forcing them to manage with fewer useful cards.</p>
-      <p><strong>Optional Rule:</strong> Before shuffling the Main Deck, players may unanimously agree to include the Joker Cards. If included, shuffle them into the Main Deck. Otherwise, leave them out of the game.</p>
-      <p>These Joker Cards feature the members of the development team and serve as a fun Easter egg for players. They are completely optional and exist purely to add humor and a small element of hand-management challenge without affecting the educational mechanics of the game.</p>
-      <h3 style="margin-top:20px;">Effect</h3>
+      <h3>🃏 Optional Joker Cards</h3>
+      <p>For players looking for a more chaotic and unpredictable experience, Ethics Under Attack includes an optional Joker Pack inspired by the classic Joker cards found in standard playing card decks.</p>
+      <p>Unlike the standard game cards, Joker Cards have no gameplay effect. They cannot be used to attack, defend, repair, activate Special/Event abilities, or satisfy any card requirement. Instead, they occupy space in a player's hand, forcing players to carefully manage their available cards.</p>
+      <p><strong>Optional Rule:</strong> Before shuffling the Main Deck, all players must unanimously agree to include the Joker Pack. If approved, shuffle all 7 Joker Cards into the Main Deck. Otherwise, leave them out of the game.</p>
+
+      <div class="joker-callout">
+        <p class="jc-eyebrow">Optional Victory Condition</p>
+        <h3>🏆 Ethical Mastery</h3>
+        <p>When playing with the Joker Pack, an alternate victory condition becomes available.</p>
+        <p>If a player ever collects all seven (7) Joker Cards in their hand at the same time, they may immediately reveal them and proudly announce <strong>"ETHICAL MASTERY!"</strong></p>
+        <p>That player instantly wins the game, regardless of:</p>
+        <ul>
+          <li>Remaining Ethics Cards</li>
+          <li>Active Ethics Policy</li>
+          <li>Ongoing attacks or card effects</li>
+          <li>Which player's turn it is</li>
+        </ul>
+        <p style="margin-top:10px;">This hidden victory condition is completely optional and only exists when the Joker Pack is included.</p>
+      </div>
+
+      <h3 style="margin-top:20px;">Joker Card Rules</h3>
       <ul>
-        <li>🃏 A Joker Card has no effect when played.</li>
-        <li>📥 It cannot be used to attack, defend, repair, or activate any special ability.</li>
-        <li>🗑️ It simply occupies a space in your hand until you choose to play and discard it during your Play Phase.</li>
+        <li>🃏 Joker Cards have no gameplay effect.</li>
+        <li>🚫 They cannot be used as Attack, Defense, Repair, or Special/Event Cards.</li>
+        <li>📥 They remain in your hand until discarded or removed by another game effect.</li>
+        <li>🗑️ You may voluntarily discard a Joker Card during your Play Phase, using your one card play for the turn.</li>
+        <li>📤 Joker Cards may also be discarded, stolen, shuffled back into the Main Deck, or otherwise removed from your hand if another card effect requires it.</li>
+        <li>🏆 To achieve Ethical Mastery, you must possess all seven Joker Cards in your hand simultaneously. If you lose or discard even one Joker Card before revealing them, you no longer meet the victory condition.</li>
       </ul>
-      <p>Because they provide no strategic benefit, Joker Cards act as "dead" cards that reduce the number of useful cards in your hand, adding a lighthearted challenge for players who choose to include them.</p>
+      <p style="margin-top:10px;">Because they provide no direct strategic benefit, Joker Cards function as dead cards that occupy valuable hand space. Players must decide whether to keep collecting them in pursuit of an instant victory or discard them to improve their chances of winning through the standard game.</p>
     </div>
   </div>
 </section>

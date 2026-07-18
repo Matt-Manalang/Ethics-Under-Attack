@@ -254,7 +254,7 @@ section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line);
 /* ---------- action card gallery (signature element) ---------- */
 .deck-gallery{display:flex; gap:26px; flex-wrap:wrap; justify-content:center;}
 .action-card{
-  perspective:1400px; width:190px; height:270px;
+  perspective:1400px; width:190px; height:310px;
 }
 .action-card-inner{
   position:relative; width:100%; height:100%; transition:transform .55s cubic-bezier(.2,.8,.2,1);
@@ -273,11 +273,12 @@ section.alt{background:var(--navy-panel); border-top:1px solid var(--navy-line);
 .action-face.front .count{font-family:var(--mono); font-size:11px; opacity:.85;}
 .action-face.front .flip-hint{position:absolute; bottom:14px; font-family:var(--mono); font-size:9px; letter-spacing:.1em; opacity:.7;}
 .action-face.back{
-  background:var(--paper); color:var(--ink); transform:rotateY(180deg); justify-content:center;
+  background:var(--paper); color:var(--ink); transform:rotateY(180deg); justify-content:flex-start;
+  overflow-y:auto;
 }
-.action-face.back .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--red-dim); margin-bottom:8px;}
-.action-face.back p{font-size:13.5px; line-height:1.55; margin:0;}
-.action-face.back ul{font-size:13px; line-height:1.55; margin:6px 0 0; padding-left:16px;}
+.action-face.back .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--red-dim); margin-bottom:8px; flex-shrink:0;}
+.action-face.back p{font-size:12.5px; line-height:1.48; margin:0;}
+.action-face.back ul{font-size:12px; line-height:1.48; margin:6px 0 0; padding-left:16px;}
 .card-attack .front{background:linear-gradient(160deg,var(--red),var(--red-dim));}
 .card-defense .front{background:linear-gradient(160deg,var(--green),var(--green-dim));}
 .card-repair .front{background:linear-gradient(160deg,var(--blue),var(--blue-dim));}

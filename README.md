@@ -43,7 +43,11 @@ Ethics Under Attack is designed to help players:
 
 ## 📜 Inspiration
 
-The game's mechanics are inspired by **Organ Attack**, while its educational content is based on the **Global Issues in Engineering Ethics** module, transforming engineering ethics concepts into an engaging and competitive tabletop experience.
+The gameplay of **Ethics Under Attack** is inspired by **Organ Attack**, a fast-paced educational card game known for its strategic attack-and-defense mechanics.
+
+**Ethics Under Attack** is an original educational card game inspired by the general style of play found in Organ Attack. All educational content, engineering ethics concepts, card effects, rules, game mechanics, artwork, graphic design, and written materials were independently created and developed for this project based on the **Global Issues in Engineering Ethics** module.
+
+The game was designed to transform engineering ethics concepts into an engaging and competitive tabletop experience while promoting ethical decision-making, strategic thinking, and collaborative learning.
 
 ---
 

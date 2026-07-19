@@ -1,19 +1,6 @@
-# Ethics Under Attack
+# Ethics Under Attack 💼💻🌱👨‍💼
 
 Inspired by the fast-paced gameplay of **Organ Attack**, **Ethics Under Attack** is a 4-player educational card game that challenges players to protect their engineering company's ethical systems while sabotaging their opponents using unethical practices inspired by **Global Issues in Engineering Ethics**.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/ef42d37e-b28c-4871-80a2-274d1b57925a" width="200" alt="Digital Rulebook QR Code">
-</p>
-
-
-
-## 📖 Digital Rulebook
-
-Scan the QR code above or visit the link below to access the official digital rulebook, which contains the complete game rules, card descriptions, gameplay mechanics, and updates.
-
-**Digital Rulebook:**  
-https://matt-manalang.github.io/Ethics-Under-Attack/
 
 ## 🎮 About the Game
 
@@ -40,9 +27,9 @@ The last player with at least one remaining Ethics Card wins.
 | Component | Quantity |
 |-----------|---------:|
 | Ethics Cards | 16 |
-| Main Deck | 64 |
+| Main Deck | 66 |
 | Ethics Policy Deck | 10 |
-| **Total Cards** | **90** |
+| **Total Cards** | **92** |
 
 ## 🎯 Learning Objectives
 
@@ -57,3 +44,19 @@ Ethics Under Attack is designed to help players:
 ## 📜 Inspiration
 
 The game's mechanics are inspired by **Organ Attack**, while its educational content is based on the **Global Issues in Engineering Ethics** module, transforming engineering ethics concepts into an engaging and competitive tabletop experience.
+
+---
+
+## 👥 Creators
+
+**Ethics Under Attack** was designed and developed by **3rd Year Mechatronics Engineering students** as a final requirement for the course:
+
+**MExE 410 – Codes, Standards and Professional Ethics for Mechatronics Engineering**
+
+This project transforms engineering ethics concepts into an engaging educational card game that promotes strategic thinking, ethical decision-making, and collaborative learning through interactive gameplay.
+
+---
+
+<p align="center">
+© 2026 Ethics Under Attack Development Team. All rights reserved.
+</p>
